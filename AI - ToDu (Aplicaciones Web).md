@@ -1,34 +1,45 @@
-UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
+<div align="center">
 
-![Logo de la Universidad Peruana de Ciencias Aplicadas](./assets/upc.png)
+<img src="./assets/upc.png" alt="Logo de la Universidad Peruana de Ciencias Aplicadas" width="90">
 
-Aplicaciones Web (8088)
+Universidad Peruana de Ciencias Aplicadas<br>
+Carrera de Ingeniería de Software
 
-&nbsp;
+**1ASI0730**<br>
+**Aplicaciones Web**
 
-PROFESOR: Bautista Ubillús, Efraín Ricardo
+NRC<br>
+**8088**
 
-&nbsp;
+**Informe del Trabajo Final**
 
-# INFORME DE TRABAJO FINAL Desarrollo de Aplicaciones Web
+Docente<br>
+**Bautista Ubillús, Efraín Ricardo**
 
-## **Startup: IA-INNOVATION**
+Equipo<br>
+**IA-INNOVATION**
 
-## Producto: AI-ToDu
+Proyecto<br>
+**AI-ToDu**
 
-Integrantes:
+**Integrantes**
 
-U202420071 \- Bernal Torres, Carlos Alberto
+<table align="center" style="display: inline-table; width: auto; border: none; border-collapse: collapse;">
+  <tr><th align="center" style="border: none;">Código</th><th align="center" style="border: none;">Apellidos y Nombres</th></tr>
+  <tr><td align="center" style="border: none;">u202420071</td><td style="border: none;">Bernal Torres, Carlos Alberto</td></tr>
+  <tr><td align="center" style="border: none;">u20241i327</td><td style="border: none;">Chui Kcomt, Luis Carlos</td></tr>
+  <tr><td align="center" style="border: none;">u202326295</td><td style="border: none;">Huayra Moreyra, Jose Maria</td></tr>
+  <tr><td align="center" style="border: none;">u20241g396</td><td style="border: none;">Lacuta Lima, Alex Rodrigo</td></tr>
+  <tr><td align="center" style="border: none;">u202313434</td><td style="border: none;">Yi Torrejon, Ethan Raul</td></tr>
+</table>
 
-U20241i327 \- Chui Kcomt, Luis Carlos
+**Período 202620**
 
-U202326295 \- Huayra Moreyra, Jose Maria
+**Octubre 2026**
 
-U20241g396 \- Lacuta Lima, Alex Rodrigo
+</div>
 
-U202313434 \- Yi Torrejon, Ethan Raul
-
-Septiembre, 2026
+<div style="page-break-after: always;"></div>
 
 # **Registro de Versiones del Informe**
 
@@ -282,7 +293,7 @@ Nos dedicamos a desarrollar soluciones de software B2B (*Business-to-Business*) 
 | :---- | :---- |
 | **Luis Carlos Chui Kcomt Código:** U20241i327 **Carrera:** Ingeniería de Software **Perfil:** Estudiante responsable con conocimientos en Python, C++, HTML. Aporto calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. | ![](./assets/Chui.jpg) |
 | Jose Maria Huayra Moreyra Código: U202326295 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos basicos y medios en C++, basico en python y poco en Javascript, conocimiento previo del frontend en html 5\. | ![][image6] |
-| Alex Rodrigo Lacuta Lima Código: U20241g396 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos básicos de programación. He usado C++ a nivel inicial. Poco conocimiento de JavaScript. Conozco HTML5 de forma básica. Con muchas ganas de aprender y ganar experiencia. | ![][image7] |
+| Alex Rodrigo Lacuta Lima Código: U20241g396 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos básicos de programación. He usado C++ a nivel inicial. Poco conocimiento de JavaScript. Conozco HTML5 de forma básica. Con muchas ganas de aprender y ganar experiencia. | ![](./assets/Lacuta.jpg) |
 | **Ethan Raul Yi Torrejon** Código: U202313434 Carrera: Ingeniería de Software Perfil: Estudiante con solidos conocimientos manejo y optimización de bases de datos relacional y no relacional, además con un sólido conocimiento en proyectos Scrum y Domain Driven Design. | ![](./assets/Yi.jpg) |
 
 &nbsp;
