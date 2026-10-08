@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/upc.png" alt="Logo de la Universidad Peruana de Ciencias Aplicadas" width="90">
+<img src="./assets/general/upc.png" alt="Logo de la Universidad Peruana de Ciencias Aplicadas" width="90">
 
 Universidad Peruana de Ciencias Aplicadas<br>
 Carrera de Ingeniería de Software
@@ -68,10 +68,8 @@ A continuación, se explicará todo acerca del desarrollo de actividades para la
 
 Para la entrega de la TB1, este es el análisis de colaboración que presenta el número de contribuciones hechas en el repositorio del informe.
 
-![](./assets/part.png)
-
-![](./assets/part1.png)
-
+![](./assets/general/part.png)
+![](./assets/general/part1.png)
 
 &nbsp;
 
@@ -289,12 +287,12 @@ Nos dedicamos a desarrollar soluciones de software B2B (*Business-to-Business*) 
 
 &nbsp;
 
-| Carlos Alberto Bernal Torres Código: U202420071 Carrera: Ingeniería de Software Perfil: Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). | ![](./assets/Bernal.jpg) |
+| Carlos Alberto Bernal Torres Código: U202420071 Carrera: Ingeniería de Software Perfil: Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). | ![](./assets/team/Bernal.jpg) |
 | :---- | :---- |
-| **Luis Carlos Chui Kcomt Código:** U20241i327 **Carrera:** Ingeniería de Software **Perfil:** Estudiante responsable con conocimientos en Python, C++, HTML. Aporto calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. | ![](./assets/Chui.jpg) |
+| **Luis Carlos Chui Kcomt Código:** U20241i327 **Carrera:** Ingeniería de Software **Perfil:** Estudiante responsable con conocimientos en Python, C++, HTML. Aporto calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. | ![](./assets/team/Chui.jpg) |
 | Jose Maria Huayra Moreyra Código: U202326295 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos basicos y medios en C++, basico en python y poco en Javascript, conocimiento previo del frontend en html 5\. | ![][image6] |
-| Alex Rodrigo Lacuta Lima Código: U20241g396 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos básicos de programación. He usado C++ a nivel inicial. Poco conocimiento de JavaScript. Conozco HTML5 de forma básica. Con muchas ganas de aprender y ganar experiencia. | ![](./assets/Lacuta.jpg) |
-| **Ethan Raul Yi Torrejon** Código: U202313434 Carrera: Ingeniería de Software Perfil: Estudiante con solidos conocimientos manejo y optimización de bases de datos relacional y no relacional, además con un sólido conocimiento en proyectos Scrum y Domain Driven Design. | ![](./assets/Yi.jpg) |
+| Alex Rodrigo Lacuta Lima Código: U20241g396 Carrera: Ingeniería de Software Perfil: Estudiante con conocimientos básicos de programación. He usado C++ a nivel inicial. Poco conocimiento de JavaScript. Conozco HTML5 de forma básica. Con muchas ganas de aprender y ganar experiencia. | ![](./assets/team/Lacuta.jpg) |
+| **Ethan Raul Yi Torrejon** Código: U202313434 Carrera: Ingeniería de Software Perfil: Estudiante con solidos conocimientos manejo y optimización de bases de datos relacional y no relacional, además con un sólido conocimiento en proyectos Scrum y Domain Driven Design. | ![](./assets/team/Yi.jpg) |
 
 &nbsp;
 
@@ -391,6 +389,8 @@ Para validar nuestros Feature Assumptions, planteamos las siguientes hipótesis:
 
 #### **1.2.2.4. Lean UX Canvas**
 
+![Lean UX Canvas](./assets/chapter-01/17.png)
+
 ## **1.3. Segmentos objetivo**
 
 Para el desarrollo de AI-ToDu bajo el modelo B2B SaaS, nos enfocaremos en dos segmentos de usuarios clave. Estos segmentos se dividen según su rol de interacción con el sistema dentro de los sectores productivos con mayor necesidad de digitalización (Gastronomía, Distribución y Manufactura Textil).
@@ -426,7 +426,7 @@ Para validar nuestra propuesta de valor en el ecosistema B2B SaaS, hemos identif
 | Competitive Analysis Landscape |  |  |  |  |
 | ----- | ----- | ----- | ----- | ----- |
 | ¿Por qué llevar a cabo este análisis? | Entender el panorama actual de las soluciones de gestión utilizadas por las MYPES locales para identificar brechas de usabilidad y oportunidades de diferenciación técnica y comercial para AI-ToDu. |  |  |  |
-| Logos | ![](./assets/4.png) | ![](./assets/5.png) | ![](./assets/2.png) | AI-ToDu (Nuestra Startup) |
+| Logos | ![](./assets/chapter-02/4.png) | ![](./assets/chapter-02/5.png) | ![](./assets/chapter-02/2.png) | AI-ToDu (Nuestra Startup) |
 | Perfil |  |  |  |  |
 | Ventaja competitiva | Súper simplificado para el punto de venta (POS) y alta penetración en el mercado local limeño. | Enfoque contable muy maduro. Conciliación bancaria y facturación homologada en múltiples países. | Altamente modular e integrado. Puede escalar desde una MYPE hasta una empresa transnacional. | Innovación adaptable y curva de aprendizaje rápida, enfocada estrictamente en la logística y el balance financiero en tiempo real. |
 | ¿Qué valor ofrece a los clientes? | Vender rápido en tiendas físicas y cumplir con la SUNAT sin complicaciones técnicas. | Mantener las finanzas, impuestos y contabilidad en orden bajo un modelo web accesible. | Tener todas las aplicaciones de gestión de una gran empresa interconectadas en una sola plataforma. | Un "sistema nervioso central" intuitivo que unifica almacén, despacho y caja, diciendo exactamente si se está ganando o perdiendo dinero. |
@@ -567,11 +567,11 @@ Con base en el análisis de las 6 entrevistas, hemos construido dos arquetipos (
 
 User Persona 1: Carlos Mendoza \- El "Dueño Estresado" (Segmento 1: Tomadores de Decisión)
 
-![](./assets/1.png)
+![](./assets/chapter-02/1.png)
 
-**User Persona 2: Miguel Rojas \- El "Almacenero Frustrado" (Segmento 2: Usuarios Finales)**![][image13]
+**User Persona 2: Miguel Rojas \- El "Almacenero Frustrado" (Segmento 2: Usuarios Finales)**
 
-![](./assets/3.png)
+![](./assets/chapter-02/3.png)
 
 ### **2.3.2. User Task Matrix.**
 
@@ -607,7 +607,7 @@ User Journey Map 1: Carlos Mendoza (El "Dueño Estresado")
 
 * **Escenario:** El cierre de mes. Carlos intenta hacer el cuadre financiero de su negocio basándose en los reportes manuales de su equipo.
 * **Captura UXPressia:**  
-  ![](./assets/6.png)
+  ![](./assets/chapter-02/6.png)
 * Fases del Journey (Para UXPressia):
   1. **Recepción de datos (Expectativa):** Carlos pide por WhatsApp el reporte mensual a su almacenero. Siente ansiedad esperando que los datos cuadren.
   2. **Revisión del Excel (Frustración):** Abre el archivo y nota fórmulas rotas y datos incompletos. Su nivel de estrés sube porque no entiende la información.
@@ -619,7 +619,7 @@ User Journey Map 2: Miguel Rojas (El "Almacenero Frustrado")
 
 * **Escenario:** Un día pico de recepción de mercadería y despacho múltiple.
 * **Captura UXPressia:**&nbsp;  
-  ![](./assets/7.png)
+  ![](./assets/chapter-02/7.png)
 * Fases del Journey (Para UXPressia):
   1. **Llegada del camión (Caos):** Llega mucha mercadería junta. Miguel anota rápido en un cuaderno con lápiz porque el chofer está apurado.
   2. **Despacho y Búsqueda (Estrés físico):** Le piden un insumo urgente para producción. Pierde 20 minutos buscando en los estantes porque no sabe exactamente dónde lo dejó.
@@ -653,7 +653,7 @@ Empathy Map 1: Carlos Mendoza (Tomador de Decisión)
 Empathy Map 2: Miguel Rojas (Usuario Final)
 
 * **Captura UXPressia:**&nbsp;  
-  ![](./assets/9.png)
+  ![](./assets/chapter-02/9.png)
 * **¿Con quién empatizamos y qué necesita hacer?:** Miguel, 28 años, almacenero. Necesita registrar el ingreso y salida de mercadería lo más rápido posible.
 * **¿Qué ve?:** Ve rumas de cajas, post-its pegados por todos lados, la letra ilegible de sus compañeros de turno.
 * **¿Qué escucha?:** "¡Despacha rápido que el camión se va\!", "¿Dónde pusiste las cajas de tomates?", "¡Ese Excel está mal cuadrado\!".
@@ -686,7 +686,7 @@ Fases y Eventos Clave Identificados (Para dibujar en FigJam/Miro):
 
 **Captura del Tablero:**&nbsp;
 
-![](./assets/10.png)
+![](./assets/chapter-02/10.png)
 
 &nbsp;
 
@@ -825,7 +825,7 @@ Estructura del Mapa de Impacto (Para dibujar en UXPressia):
 
 &nbsp;
 
-*![](./assets/18.png)![](./assets/19.png)![](./assets/20.png)![](./assets/21.png)![](./assets/22.png)*
+**![](./assets/chapter-03/18.png)![](./assets/chapter-03/19.png)![](./assets/chapter-03/20.png)![](./assets/chapter-03/21.png)![](./assets/chapter-03/22.png)**
 
 &nbsp;
 
@@ -1018,9 +1018,10 @@ En esta sección presentamos el diseño de interfaz de usuario para el Landing P
 
 Nuestros wireframes para Desktop y Mobile Web Browser establecen la jerarquía visual de la página sin distracciones estéticas. Hemos priorizado la heurística de "Diseño estético y minimalista", asegurando que el *Hero Section* contenga una propuesta de valor clara y un único *Call to Action* (CTA) prominente. La estructura modular permite apilar fácilmente el contenido en la vista móvil.
 
-![](./assets/11.png) Wireframe Landing Page Desktop
+![](./assets/chapter-04/11.png) Wireframe Landing Page Desktop
 
-![](./assets/12.png)![](./assets/13.png) Wireframe Landing Page Mobile
+![](./assets/chapter-04/12.png)![](./assets/chapter-04/13.png)   
+Wireframe Landing Page Mobile
 
 ### **4.3.2. Landing Page Mock-up.**
 
@@ -1048,7 +1049,7 @@ Para mapear los flujos de tareas transversales, elaboramos un Wireflow extendido
 
 El diagrama ilustra paso a paso cómo la vista cambia en respuesta a la interacción del usuario, guiando el proceso lógicamente desde la autenticación hasta la actualización del estado del sistema:
 
-![](./assets/23.png)
+![](./assets/chapter-04/23.png)
 
 **Explicación del flujo:**
 
@@ -1091,8 +1092,7 @@ Como resultado de la organización, definimos cuatro *Bounded Contexts* (Context
 3. **Logistics and Dispatch:** Gestiona las salidas de mercadería, manifiestos de ruta y trazabilidad.
 4. **Billing and Transactions:** Administra las ventas, pagos y emisión de comprobantes.
 
-![](./assets/24.png)
-
+![](./assets/chapter-04/24.png)
 ### **4.6.2. Software Architecture Context Diagram.**
 
 El Diagrama de Contexto (Nivel 1 del Modelo C4) ilustra a AI-ToDu en el centro de su entorno operativo, mostrando las interacciones de alto nivel con los actores del sistema y los sistemas externos (terceros) obligatorios para la operación.
@@ -1103,7 +1103,7 @@ Explicación del diagrama:
 * **Sistema Central:** "AI-ToDu SaaS", que centraliza la operación.
 * **Sistemas Externos:** Para brindar una solución completa en Perú, el sistema se integra con la **SUNAT API** (para la validación y emisión de comprobantes de pago electrónicos obligatorios) y con un servicio de **Email Gateway** (ej. SendGrid o AWS SES) para el envío de alertas de stock mínimo a los dueños.
 
-![](./assets/25.png)
+![](./assets/chapter-04/25.png)
 
 ### **4.6.3. Software Architecture Container Diagrams.**
 
@@ -1116,7 +1116,7 @@ Explicación del diagrama:
 * **RESTful API (Backend Application):** Desarrollada en C\# utilizando el framework Spring Boot. Este contenedor expone los *Endpoints* consumidos por la aplicación frontend y orquesta la lógica de negocio de los *Bounded Contexts*.
 * **Database (Relational RDBMS):** Base de datos principal (ej. PostgreSQL o MySQL) que persiste el estado de los *Aggregates*.
 
-![](./assets/26.png)
+![](./assets/chapter-04/26.png)
 
 ### **4.6.4. Software Architecture Components Diagrams.**
 
@@ -1130,7 +1130,7 @@ El Diagrama de Componentes (Nivel 3 del Modelo C4) hace "zoom" dentro del conten
 
 En esta sección detallamos cómo los conceptos teóricos descubiertos en el Event Storming y estructurados en nuestra arquitectura (DDD) se traducen en artefactos de código concretos mediante el Diseño Orientado a Objetos (POO). El objetivo principal de nuestro diseño es proteger los "Invariantes" (reglas de negocio) encapsulando el estado de los objetos y exponiendo únicamente comportamientos (métodos) con significado para el dominio.
 
-![](./assets/27.png)![](./assets/28.png)![](./assets/29.png)![](./assets/30.png) 4.7.1. Class Diagrams.
+![](./assets/chapter-04/27.png)![](./assets/chapter-04/28.png)![](./assets/chapter-04/29.png)![](./assets/chapter-04/30.png) 4.7.1. Class Diagrams.
 
 A continuación, presentamos los Diagramas de Clases UML para los Bounded Contexts principales de nuestro backend en Spring Boot (Java), mapeando las interfaces definidas en nuestro frontend (TypeScript) hacia clases de dominio robustas.
 
@@ -1149,14 +1149,10 @@ A continuación, presentamos los Diagramas de Clases UML para los Bounded Contex
 
 &nbsp;
 
-![](./assets/31.png)
-
-![](./assets/32.png)
-
-![](./assets/33.png)
-
-![](./assets/34.png)
-
+![](./assets/chapter-04/31.png)
+![](./assets/chapter-04/32.png)
+![](./assets/chapter-04/33.png)
+![](./assets/chapter-04/34.png)
 ## **4.8. Database Design.**
 
 El diseño de nuestra base de datos relacional (SQL Server) sigue la misma filosofía de separación por *Bounded Contexts*. Para evitar el acoplamiento a nivel de base de datos (el antipatrón "Big Ball of Mud"), cada contexto delimitado es dueño de sus propias tablas, y las referencias cruzadas se manejan de forma blanda (mediante identificadores alfanuméricos) en lugar de *Foreign Keys* estrictas a nivel de motor de base de datos.
@@ -1175,7 +1171,7 @@ Hemos utilizado Spring Data JPA para el mapeo objeto-relacional (ORM), lo que se
   * Tabla commercial\_transactions: Almacena el subtotal, impuestos y total de la venta.
   * Incluye la columna linked\_manifest\_id (VARCHAR), la cual actúa como una referencia lógica al despacho, respetando la autonomía del esquema de ventas sin generar bloqueos en cascada en la base de datos.
 
-![](./assets/35.png)
+![](./assets/chapter-04/35.png)
 
 # **Capítulo V: Product Implementation, Validation & Deployment**
 
