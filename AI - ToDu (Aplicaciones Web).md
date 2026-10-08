@@ -666,33 +666,51 @@ Empathy Map 2: Miguel Rojas (Usuario Final)
 
 En esta sección presentamos los resultados de nuestra sesión colaborativa de Big Picture Event Storming. El objetivo de esta actividad fue mapear visualmente el ecosistema completo del negocio logístico y comercial de las MYPES para identificar los procesos clave, los cuellos de botella y las oportunidades de mejora tecnológica.
 
-**Resumen del Proceso:** El equipo se reunió de forma virtual utilizando FigJam como herramienta de pizarra infinita. Durante una sesión intensiva de 2 horas, exploramos la línea de tiempo completa del negocio (de izquierda a derecha), desde que la mercadería es recibida de los proveedores hasta que es facturada y entregada al cliente final.
+**Resumen del Proceso:** El equipo trabajó de forma colaborativa en Miro como pizarra infinita. Recorrimos la línea de tiempo completa del negocio (de izquierda a derecha), desde el registro de usuarios y la compra a proveedores hasta que la mercadería es facturada y entregada al cliente final. La sesión se desarrolló en cuatro etapas: exploración caótica, línea de tiempo con eventos pivote, identificación de puntos críticos y tablero final.
 
 Utilizamos la siguiente convención de colores:
 
 * **Post-its Naranjas:** Eventos de Dominio (*Domain Events*), redactados siempre en tiempo pasado.
+* **Post-its Azules:** Comandos (acciones que disparan los eventos).
 * **Post-its Amarillos:** Usuarios/Actores (Ej. Dueño, Almacenero, Vendedor).
 * **Post-its Rosados:** Sistemas Externos (Ej. SUNAT, Proveedor GPS).
 * **Post-its Lilas:** Políticas o Reglas de negocio.
+* **Post-its Rojos:** Puntos críticos obtenidos de las entrevistas.
+* **Post-its Verdes:** Oportunidades para AI-ToDu.
 
-Fases y Eventos Clave Identificados (Para dibujar en FigJam/Miro):
+**Enlace al tablero:** [Big Picture Event Storming – Miro](https://miro.com/app/board/uXjVEc6yc_o=/)
 
-1. Fase de Abastecimiento e Inventario:
-  * *Eventos (Naranja):* MerchandiseReceived (Mercadería Recibida), StockInspected (Stock Inspeccionado), InventoryUpdated (Inventario Actualizado), MerchandiseQuarantined (Mercadería en Cuarentena), LowStockAlertTriggered (Alerta de Stock Mínimo Disparada).
-2. Fase Comercial y Facturación:
-  * *Eventos (Naranja):* PurchaseOrderPlaced (Orden de Compra Realizada), CommercialTransactionCreated (Transacción Comercial Creada), PaymentProcessed (Pago Procesado), InvoiceGenerated (Factura Generada).
-3. Fase de Despacho y Logística:
-  * *Eventos (Naranja):* ShipmentManifestCreated (Manifiesto de Despacho Creado), MerchandiseDispatched (Mercadería Despachada), TelemetryUpdated (Telemetría Actualizada), DeliveryConfirmed (Entrega Confirmada).
+### **Etapa 1 – Exploración caótica**
 
-**Captura del Tablero:**&nbsp;
+![Etapa 1 - Exploración caótica](./assets/chapter-02/exploracion.jpg)
 
-![](./assets/chapter-02/10.png)
+### **Etapa 2 – Línea de tiempo y eventos pivote**
 
-&nbsp;
+![Etapa 2 - Línea de tiempo](./assets/chapter-02/linea-tiempo.jpg)
 
-&nbsp;
+### **Etapa 3 – Puntos críticos**
 
-**Análisis y Oportunidades:** Al visualizar el flujo completo, el equipo notó que la mayor acumulación de "dolores" y cuellos de botella (representados con post-its rojos de riesgo) ocurría en la transición entre la Fase 1 y la Fase 2\. La información de lo que hay en el almacén no fluye en tiempo real hacia ventas, generando un vacío de información. AI-ToDu actuará como el puente digital que sincronice los eventos InventoryUpdated directamente con PurchaseOrderPlaced.
+![Etapa 3 - Puntos críticos](./assets/chapter-02/hotspots.jpg)
+
+### **Etapa 4 – Tablero final**
+
+**Fase 1 – Identidad y acceso**
+
+![Fase 1 - Identidad y acceso](./assets/chapter-02/identidad-acceso.png)
+
+**Fase 2 – Abastecimiento e inventario**
+
+![Fase 2 - Abastecimiento e inventario](./assets/chapter-02/abastecimiento-inventario.png)
+
+**Fase 3 – Ventas y facturación**
+
+![Fase 3 - Ventas y facturación](./assets/chapter-02/ventas-facturacion.png)
+
+**Fase 4 – Despacho y logística**
+
+![Fase 4 - Despacho y logística](./assets/chapter-02/despacho-logistica.png)
+
+**Análisis y Oportunidades:** Al visualizar el flujo completo, el equipo notó que la mayor acumulación de puntos críticos ocurre en la fase de Abastecimiento e inventario y en su transición hacia Ventas y facturación. La información de lo que hay en el almacén no fluye en tiempo real hacia ventas, por lo que se ofrecen productos que ya no existen y hay descuadres a fin de mes. AI-ToDu actuará como el puente digital que sincronice el evento *Inventario actualizado* con *Pago procesado* y *Mercadería despachada*, y que dispare alertas automáticas de stock mínimo.
 
 ## **2.5. Ubiquitous Language.**
 
