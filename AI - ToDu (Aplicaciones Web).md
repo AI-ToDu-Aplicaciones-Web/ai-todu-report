@@ -1769,16 +1769,16 @@ El análisis realizado permite concluir que AI-ToDu puede convertirse en una her
 Se recomienda continuar validando la propuesta con propietarios, administradores y operarios de almacén mediante entrevistas, pruebas de usabilidad y prototipos funcionales. Asimismo, es importante priorizar el desarrollo del módulo base de inventario y ventas, pues representa el mayor valor para los usuarios y el punto de partida más sólido para la adopción del sistema. También se sugiere reforzar aspectos como la seguridad de la información, la facilidad de onboarding, la integración con procesos reales del negocio y la generación de reportes que apoyen la toma de decisiones.
 
 ### Conclusiones
-AI-ToDu busca reducir la ineficiencia operativa de las MYPES mediante la digitalización de procesos clave como inventario, ventas y despacho.
-Los dueños de negocio pueden beneficiarse de una mejor visibilidad financiera y operativa, evitando pérdidas por falta de control y decisiones basadas en información incompleta.
-Los operarios de almacén pueden mejorar su productividad al reemplazar procesos manuales por herramientas más rápidas, claras y menos propensas a errores.
-La integración de información entre inventario, ventas y logística representa el principal valor diferencial de la plataforma.
-El enfoque centrado en el usuario y la validación de necesidades son elementos clave para garantizar la adopción real del sistema.
-La propuesta tiene un alto potencial de impacto en micro y pequeñas empresas que aún operan con procesos tradicionales y desarticulados.
+- AI-ToDu busca reducir la ineficiencia operativa de las MYPES mediante la digitalización de procesos clave como inventario, ventas y despacho.
+- Los dueños de negocio pueden beneficiarse de una mejor visibilidad financiera y operativa, evitando pérdidas por falta de control y decisiones basadas en información incompleta.
+- Los operarios de almacén pueden mejorar su productividad al reemplazar procesos manuales por herramientas más rápidas, claras y menos propensas a errores.
+- La integración de información entre inventario, ventas y logística representa el principal valor diferencial de la plataforma.
+- El enfoque centrado en el usuario y la validación de necesidades son elementos clave para garantizar la adopción real del sistema.
+- La propuesta tiene un alto potencial de impacto en micro y pequeñas empresas que aún operan con procesos tradicionales y desarticulados.
 ### Recomendaciones
-Validar constantemente las necesidades de usuarios y clientes potenciales a través de entrevistas, encuestas y pruebas de prototipo.
-Priorizar el desarrollo del módulo de inventario como núcleo del producto, dado que resuelve la necesidad más crítica del segmento objetivo.
-Diseñar una interfaz simple, clara y adaptable a dispositivos móviles para facilitar su uso por parte del personal operativo.
-Incorporar alertas, dashboards y reportes visuales que permitan a los dueños monitorear el estado del negocio en tiempo real.
-Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
-Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
+- Validar constantemente las necesidades de usuarios y clientes potenciales a través de entrevistas, encuestas y pruebas de prototipo.
+- Priorizar el desarrollo del módulo de inventario como núcleo del producto, dado que resuelve la necesidad más crítica del segmento objetivo.
+- Diseñar una interfaz simple, clara y adaptable a dispositivos móviles para facilitar su uso por parte del personal operativo.
+- Incorporar alertas, dashboards y reportes visuales que permitan a los dueños monitorear el estado del negocio en tiempo real.
+- Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
+- Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
