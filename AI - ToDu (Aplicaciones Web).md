@@ -1898,7 +1898,7 @@ A continuación se presentan las referencias bibliográficas, webgrafías y est�
 
 ### **E.1. Diagrama de Infraestructura Completa**
 
-![Arquitectura Azure - Diagrama de Infraestructura](./assets/infrastructure/azure-infrastructure-diagram.png)
+![Arquitectura Azure - Diagrama de Infraestructura](./assets/chapter-04/azure.jpeg)
 
 **Descripción:** Diagrama que ilustra la arquitectura de despliegue de AI-ToDu en Microsoft Azure, incluyendo servicios de frontend, API, datos, seguridad y monitorización.
 
@@ -1931,7 +1931,7 @@ A continuación se presentan las referencias bibliográficas, webgrafías y est�
 
 ### **F.1. Vista de Dashboard Gerencial**
 
-![Mockup - Dashboard Gerencial](./assets/mockups/dashboard-general-mockup.png)
+![Mockup - Dashboard Gerencial](./assets/chapter-04/mockup.jpeg)
 
 **Descripción:** Panel de control para dueños y administradores. Presenta indicadores clave del negocio en tiempo real, permitiendo decisiones informadas sin interrumpir operaciones.
 
