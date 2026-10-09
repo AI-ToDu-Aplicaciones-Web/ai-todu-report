@@ -1755,3 +1755,30 @@ Durante este Sprint, el equipo utilizó GitHub para gestionar el código bajo el
 
 * **Diseño de Arquitectura y Tipado Estricto:** La IA no reemplazó la lógica de ingeniería humana, sino que actuó como asesor. Utilizamos ingeniería de prompts para generar la estructura de los Modelos de Dominio iniciales (Interfaces y Enums), asegurando un tipado fuerte y validando nuestras decisiones sobre el uso de *Lazy Loading* y *Feature Modules*.
 * **Documentación Automatizada:** La redacción técnica y el formato Markdown del propio informe fue co-creado con IA, permitiendo al equipo humano enfocarse en la lógica de negocio y las decisiones arquitectónicas mientras el modelo de lenguaje aplicaba los estándares de redacción corporativa.
+
+## Conclusiones
+AI-ToDu presenta una solución orientada a resolver los problemas reales de gestión operativa que enfrentan las micro y pequeñas empresas en Perú, especialmente aquellas que gestionan inventario, ventas y despacho de manera manual o con herramientas fragmentadas. A partir del análisis de los segmentos objetivo, se identificó que los dueños y administradores requieren visibilidad, control y rentabilidad, mientras que los operarios necesitan rapidez, simplicidad y reducción de errores en procesos diarios. Esta diferencia de necesidades permite justificar la propuesta del producto como una plataforma SaaS integral, diseñada para apoyar tanto la toma de decisiones como la ejecución operativa.
+
+El desarrollo de herramientas como User Personas, User Task Matrix, User Journey Mapping y Big Picture Event Storming evidenció que la problemática principal no radica únicamente en la falta de tecnología, sino en la falta de una solución adaptada al contexto real de las MYPES. Los procesos basados en cuadernos, Excel, mensajes de WhatsApp y seguimiento manual generan pérdida de tiempo, errores en la trazabilidad, conflictos entre áreas y poca visibilidad financiera. En ese sentido, AI-ToDu se consolida como una alternativa viable para centralizar información, automatizar actividades repetitivas y mejorar la eficiencia general del negocio.
+
+Asimismo, el enfoque centrado en el usuario permitió definir una propuesta de valor clara: facilitar el control del inventario, optimizar el flujo de ventas, mejorar la logística y ofrecer reportes para la toma de decisiones. La arquitectura del sistema, el diseño de la interfaz y la priorización del backlog muestran que la solución responde a necesidades concretas del negocio y no a una idea tecnológica aislada. Esto refuerza la relevancia del proyecto, ya que conecta un problema operativo real con una propuesta sustentada en investigación, diseño y validación.
+
+### Conclusiones y recomendaciones
+El análisis realizado permite concluir que AI-ToDu puede convertirse en una herramienta estratégica para las MYPES que buscan digitalizar sus operaciones sin requerir sistemas complejos, costosos o difíciles de adoptar. Sin embargo, su éxito dependerá de la continuidad en la validación de las necesidades reales del usuario, así como de la capacidad del producto para mantener una experiencia intuitiva, confiable y escalable.
+
+Se recomienda continuar validando la propuesta con propietarios, administradores y operarios de almacén mediante entrevistas, pruebas de usabilidad y prototipos funcionales. Asimismo, es importante priorizar el desarrollo del módulo base de inventario y ventas, pues representa el mayor valor para los usuarios y el punto de partida más sólido para la adopción del sistema. También se sugiere reforzar aspectos como la seguridad de la información, la facilidad de onboarding, la integración con procesos reales del negocio y la generación de reportes que apoyen la toma de decisiones.
+
+### Conclusiones
+AI-ToDu busca reducir la ineficiencia operativa de las MYPES mediante la digitalización de procesos clave como inventario, ventas y despacho.
+Los dueños de negocio pueden beneficiarse de una mejor visibilidad financiera y operativa, evitando pérdidas por falta de control y decisiones basadas en información incompleta.
+Los operarios de almacén pueden mejorar su productividad al reemplazar procesos manuales por herramientas más rápidas, claras y menos propensas a errores.
+La integración de información entre inventario, ventas y logística representa el principal valor diferencial de la plataforma.
+El enfoque centrado en el usuario y la validación de necesidades son elementos clave para garantizar la adopción real del sistema.
+La propuesta tiene un alto potencial de impacto en micro y pequeñas empresas que aún operan con procesos tradicionales y desarticulados.
+### Recomendaciones
+Validar constantemente las necesidades de usuarios y clientes potenciales a través de entrevistas, encuestas y pruebas de prototipo.
+Priorizar el desarrollo del módulo de inventario como núcleo del producto, dado que resuelve la necesidad más crítica del segmento objetivo.
+Diseñar una interfaz simple, clara y adaptable a dispositivos móviles para facilitar su uso por parte del personal operativo.
+Incorporar alertas, dashboards y reportes visuales que permitan a los dueños monitorear el estado del negocio en tiempo real.
+Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
+Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
