@@ -1,0 +1,202 @@
+@startuml 02-warehouse
+!include style.iuml
+title Warehouse and Inventory Management (Core Domain)
+left to right direction
+
+package "Purchase orders" {
+  rectangle "Purchasing Manager" <<actor>> as f1_a
+  rectangle "Place Purchase Order" <<command>> as f1_c
+  rectangle "PurchaseOrder" <<aggregate>> as f1_g
+  rectangle "Purchase Order Placed" <<event>> as f1_e
+  rectangle "Owner" <<actor>> as f1_a2
+  rectangle "Approve Purchase Order" <<command>> as f1_c2
+  rectangle "PurchaseOrder" <<aggregate>> as f1_g2
+  rectangle "Purchase Order Approved" <<event>> as f1_e2
+  rectangle "Supplier" <<external>> as f1_x
+  rectangle "Every item needs a valid quantity (US21)" <<rule>> as f1_r
+  rectangle "Only the owner can approve\nor reject orders (US22)" <<rule>> as f1_r2
+  f1_a --> f1_c
+  f1_c --> f1_g
+  f1_g --> f1_e
+  f1_g .. f1_r
+  f1_e --> f1_a2
+  f1_a2 --> f1_c2
+  f1_c2 --> f1_g2
+  f1_g2 --> f1_e2
+  f1_g2 .. f1_r2
+  f1_e2 ..> f1_x
+}
+
+package "Goods receipt and inspection" {
+  rectangle "Warehouse Operator" <<actor>> as f2_a
+  rectangle "Register Merchandise" <<command>> as f2_c
+  rectangle "InventoryItem" <<aggregate>> as f2_g
+  rectangle "Merchandise Received" <<event>> as f2_e
+  rectangle "Inspect Stock" <<command>> as f2_c2
+  rectangle "InventoryItem" <<aggregate>> as f2_g2
+  rectangle "Stock Inspected" <<event>> as f2_e2
+  rectangle "If merchandise is damaged,\nsend it to quarantine" <<policy>> as f2_p
+  rectangle "Quarantine Merchandise" <<command>> as f2_c3
+  rectangle "InventoryItem" <<aggregate>> as f2_g3
+  rectangle "Merchandise Quarantined" <<event>> as f2_e3
+  rectangle "Requires an approved purchase order (US23)\nSKU is required and unique (US02)" <<rule>> as f2_r
+  rectangle "Quarantined items cannot be\nsold or dispatched (US16)" <<rule>> as f2_r3
+  f2_a --> f2_c
+  f2_c --> f2_g
+  f2_g --> f2_e
+  f2_g .. f2_r
+  f2_e --> f2_c2
+  f2_c2 --> f2_g2
+  f2_g2 --> f2_e2
+  f2_e2 --> f2_p
+  f2_p --> f2_c3
+  f2_c3 --> f2_g3
+  f2_g3 --> f2_e3
+  f2_g3 .. f2_r3
+}
+
+package "Quarantine release" {
+  rectangle "Warehouse Manager" <<actor>> as f3_a
+  rectangle "Release Quarantine" <<command>> as f3_c
+  rectangle "InventoryItem" <<aggregate>> as f3_g
+  rectangle "Quarantine Released" <<event>> as f3_e
+  rectangle "Only an authorized user can release (US16)" <<rule>> as f3_r
+  f3_a --> f3_c
+  f3_c --> f3_g
+  f3_g --> f3_e
+  f3_g .. f3_r
+}
+
+package "Lots and expiration" {
+  rectangle "Warehouse Operator" <<actor>> as f4_a
+  rectangle "Register Lot" <<command>> as f4_c
+  rectangle "InventoryLot" <<aggregate>> as f4_g
+  rectangle "Lot Registered" <<event>> as f4_e
+  rectangle "Expiration Registered" <<event>> as f4_e2
+  rectangle "When the expiration date is near,\nalert the warehouse staff" <<policy>> as f4_p
+  rectangle "Expiration Alert Triggered" <<event>> as f4_e3
+  rectangle "Expired items are not available\nfor sale or dispatch (US15)" <<rule>> as f4_r
+  f4_a --> f4_c
+  f4_c --> f4_g
+  f4_g --> f4_e
+  f4_e --> f4_e2
+  f4_e2 --> f4_p
+  f4_p --> f4_e3
+  f4_g .. f4_r
+}
+
+package "Location" {
+  rectangle "Warehouse Operator" <<actor>> as f5_a
+  rectangle "Assign Location" <<command>> as f5_c
+  rectangle "WarehouseLocation" <<aggregate>> as f5_g
+  rectangle "Product Located" <<event>> as f5_e
+  f5_a --> f5_c
+  f5_c --> f5_g
+  f5_g --> f5_e
+}
+
+package "Stock movements" {
+  rectangle "Warehouse Operator" <<actor>> as f6_a
+  rectangle "Update Inventory" <<command>> as f6_c
+  rectangle "InventoryItem" <<aggregate>> as f6_g
+  rectangle "Inventory Updated" <<event>> as f6_e
+  rectangle "When stock falls below the minimum,\nalert the owner" <<policy>> as f6_p
+  rectangle "Low Stock Alert Triggered" <<event>> as f6_e2
+  rectangle "Email Gateway" <<external>> as f6_x
+  rectangle "Quantity cannot be negative (US11)" <<rule>> as f6_r
+  f6_a --> f6_c
+  f6_c --> f6_g
+  f6_g --> f6_e
+  f6_e --> f6_p
+  f6_p --> f6_e2
+  f6_e2 ..> f6_x
+  f6_g .. f6_r
+}
+
+package "Stock reservation (triggered by Billing)" {
+  rectangle "When a product is added to a transaction\n(Billing), reserve its stock" <<policy>> as f7_p
+  rectangle "Reserve Stock" <<command>> as f7_c
+  rectangle "InventoryItem" <<aggregate>> as f7_g
+  rectangle "Stock Reserved" <<event>> as f7_e
+  rectangle "When a payment is processed (Billing),\ndeduct the reserved stock" <<policy>> as f7_p2
+  rectangle "Deduct Reserved Stock" <<command>> as f7_c2
+  rectangle "InventoryItem" <<aggregate>> as f7_g2
+  rectangle "Inventory Updated" <<event>> as f7_e2
+  rectangle "When a transaction is cancelled (Billing),\nrelease the reserved stock" <<policy>> as f7_p3
+  rectangle "Release Stock" <<command>> as f7_c3
+  rectangle "InventoryItem" <<aggregate>> as f7_g3
+  rectangle "Stock Released" <<event>> as f7_e3
+  f7_p --> f7_c
+  f7_c --> f7_g
+  f7_g --> f7_e
+  f7_p2 --> f7_c2
+  f7_c2 --> f7_g2
+  f7_g2 --> f7_e2
+  f7_p3 --> f7_c3
+  f7_c3 --> f7_g3
+  f7_g3 --> f7_e3
+}
+
+package "Physical count and adjustment" {
+  rectangle "Warehouse Manager" <<actor>> as f8_a
+  rectangle "Perform Physical Count" <<command>> as f8_c
+  rectangle "PhysicalCount" <<aggregate>> as f8_g
+  rectangle "Inventory Counted" <<event>> as f8_e
+  rectangle "When differences are found,\nadjust the inventory" <<policy>> as f8_p
+  rectangle "Adjust Inventory" <<command>> as f8_c2
+  rectangle "InventoryItem" <<aggregate>> as f8_g2
+  rectangle "Inventory Adjusted" <<event>> as f8_e2
+  rectangle "Every adjustment requires a reason\nand a person in charge (US17, US40)" <<rule>> as f8_r
+  f8_a --> f8_c
+  f8_c --> f8_g
+  f8_g --> f8_e
+  f8_e --> f8_p
+  f8_p --> f8_c2
+  f8_c2 --> f8_g2
+  f8_g2 --> f8_e2
+  f8_g2 .. f8_r
+}
+
+package "Shrinkage and returns" {
+  rectangle "Warehouse Operator" <<actor>> as f9_a
+  rectangle "Register Shrinkage" <<command>> as f9_c
+  rectangle "InventoryItem" <<aggregate>> as f9_g
+  rectangle "Shrinkage Registered" <<event>> as f9_e
+  rectangle "A reason is required (US37)" <<rule>> as f9_r
+  rectangle "When a return is registered (Billing),\nclassify the returned product" <<policy>> as f9_p
+  rectangle "Classify Returned Product" <<command>> as f9_c2
+  rectangle "InventoryItem" <<aggregate>> as f9_g2
+  rectangle "Returned Product Classified" <<event>> as f9_e2
+  rectangle "If the returned product is damaged,\nsend it to quarantine or shrinkage (US39)" <<policy>> as f9_p2
+  f9_a --> f9_c
+  f9_c --> f9_g
+  f9_g --> f9_e
+  f9_g .. f9_r
+  f9_p --> f9_c2
+  f9_c2 --> f9_g2
+  f9_g2 --> f9_e2
+  f9_e2 --> f9_p2
+}
+
+package "Read models" {
+  rectangle "Inventory Stock View" <<readmodel>> as rm0
+  rectangle "Product Search View\n(SKU, name or barcode)" <<readmodel>> as rm1
+  rectangle "Warehouse Location View" <<readmodel>> as rm2
+  rectangle "Lot Detail View" <<readmodel>> as rm3
+  rectangle "Expiration View" <<readmodel>> as rm4
+  rectangle "Quarantine View" <<readmodel>> as rm5
+  rectangle "Inventory Difference Report" <<readmodel>> as rm6
+  rectangle "Shrinkage Report (US41)" <<readmodel>> as rm7
+}
+
+' Orden vertical de los flujos (de arriba hacia abajo)
+f9_a -[hidden]left-> f8_a
+f8_a -[hidden]left-> f7_p
+f7_p -[hidden]left-> f6_a
+f6_a -[hidden]left-> f5_a
+f5_a -[hidden]left-> f4_a
+f4_a -[hidden]left-> f3_a
+f3_a -[hidden]left-> f2_a
+f2_a -[hidden]left-> f1_a
+f9_a -[hidden]left-> rm0
+@enduml

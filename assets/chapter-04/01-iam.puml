@@ -1,0 +1,72 @@
+@startuml 01-iam
+!include style.iuml
+title Identity and Access Management (IAM)
+left to right direction
+
+package "Register users" {
+  rectangle "Administrator" <<actor>> as f1_a
+  rectangle "Register User" <<command>> as f1_c
+  rectangle "User" <<aggregate>> as f1_g
+  rectangle "User Registered" <<event>> as f1_e
+  rectangle "Email must be unique (US06)" <<rule>> as f1_r
+  f1_a --> f1_c
+  f1_c --> f1_g
+  f1_g --> f1_e
+  f1_g .. f1_r
+}
+
+package "Sign in" {
+  rectangle "User" <<actor>> as f2_a
+  rectangle "Authenticate User" <<command>> as f2_c
+  rectangle "User" <<aggregate>> as f2_g
+  rectangle "User Authenticated" <<event>> as f2_e
+  rectangle "Disabled users cannot sign in (US07)" <<rule>> as f2_r
+  f2_a --> f2_c
+  f2_c --> f2_g
+  f2_g --> f2_e
+  f2_g .. f2_r
+}
+
+package "Recover access" {
+  rectangle "User" <<actor>> as f3_a
+  rectangle "Recover Access" <<command>> as f3_c
+  rectangle "User" <<aggregate>> as f3_g
+  rectangle "Access Recovered" <<event>> as f3_e
+  rectangle "Email Gateway" <<external>> as f3_x
+  f3_a --> f3_c
+  f3_c --> f3_g
+  f3_g --> f3_e
+  f3_c ..> f3_x
+}
+
+package "Roles and permissions" {
+  rectangle "Administrator" <<actor>> as f4_a
+  rectangle "Assign Role" <<command>> as f4_c
+  rectangle "User" <<aggregate>> as f4_g
+  rectangle "Role Assigned" <<event>> as f4_e
+  rectangle "Update Permissions" <<command>> as f4_c2
+  rectangle "Role" <<aggregate>> as f4_g2
+  rectangle "Permissions Updated" <<event>> as f4_e2
+  rectangle "Only the owner or an administrator\ncan assign roles and permissions (US05, US09)" <<rule>> as f4_r
+  f4_a --> f4_c
+  f4_c --> f4_g
+  f4_g --> f4_e
+  f4_a --> f4_c2
+  f4_c2 --> f4_g2
+  f4_g2 --> f4_e2
+  f4_g2 .. f4_r
+}
+
+package "Read models" {
+  rectangle "User Profile" <<readmodel>> as rm0
+  rectangle "User List" <<readmodel>> as rm1
+  rectangle "Role Permissions" <<readmodel>> as rm2
+  rectangle "Audit Log (US10)" <<readmodel>> as rm3
+}
+
+' Orden vertical de los flujos (de arriba hacia abajo)
+f4_a -[hidden]left-> f3_a
+f3_a -[hidden]left-> f2_a
+f2_a -[hidden]left-> f1_a
+f4_a -[hidden]left-> rm0
+@enduml

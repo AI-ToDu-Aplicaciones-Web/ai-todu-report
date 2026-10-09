@@ -1101,16 +1101,56 @@ A partir del entendimiento general del negocio logrado en el *Big Picture Event 
 
 ### **4.6.1. Design-Level Event Storming.**
 
-Para esta fase, el equipo llevó a cabo una sesión de *Design-Level Event Storming* con el objetivo de refinar los eventos descubiertos previamente y agruparlos lógicamente. Durante este proceso, identificamos los *Commands* (acciones del usuario, representadas en notas azules) que disparan los eventos, los *Aggregates* (entidades de dominio, en notas amarillas) que validan las reglas de negocio, y las *Queries/Read Models* (notas verdes) que los usuarios necesitan ver en pantalla.
+A partir de las cuatro fases identificadas en el *Big Picture Event Storming* (sección 2.4), el equipo llevó a cabo una sesión de *Design-Level Event Storming* con el objetivo de refinar los eventos descubiertos y modelar, para cada proceso, qué actor ejecuta un comando, qué agregado lo valida, qué evento de dominio se produce y qué política reacciona a ese evento. Además, se incorporaron las reglas de negocio obtenidas de los criterios de aceptación de las User Stories (capítulo III), los sistemas externos y los modelos de lectura que los usuarios necesitan consultar.
 
-Como resultado de la organización, definimos cuatro *Bounded Contexts* (Contextos Delimitados) principales para la plataforma SaaS:
+Los diagramas se elaboraron como *Diagram-as-Code* con PlantUML. Sus archivos fuente se encuentran en el repositorio del informe, en `assets/chapter-04/`.
 
-1. **Identity and Access Management (IAM):** Gestiona la autenticación, autorización y perfiles de los empleados de la MYPE.
-2. **Warehouse and Inventory Management:** El *Core Domain*, encargado del control de stock, movimientos y métricas de almacenamiento.
-3. **Logistics and Dispatch:** Gestiona las salidas de mercadería, manifiestos de ruta y trazabilidad.
-4. **Billing and Transactions:** Administra las ventas, pagos y emisión de comprobantes.
+Convención utilizada:
 
-![](./assets/chapter-04/24.png)
+* **Actor (amarillo claro):** rol que ejecuta la acción.
+* **Command (azul):** acción que se solicita al sistema.
+* **Aggregate (amarillo):** entidad de dominio que valida las reglas y cambia de estado.
+* **Domain Event (naranja):** hecho de negocio ocurrido, en tiempo pasado.
+* **Policy (lila):** reacción automática ante un evento (*cuando… entonces…*).
+* **Read Model (verde):** información que el usuario consulta en pantalla.
+* **External System (rosado):** sistema externo con el que se integra AI-ToDu.
+* **Business Rule (gris):** regla de negocio o invariante del agregado, con la User Story de origen.
+
+![Leyenda del Design-Level Event Storming](./assets/chapter-04/legend.png)
+
+Como resultado, se definieron cuatro *Bounded Contexts*:
+
+#### **Identity and Access Management (IAM)**
+
+Gestiona el registro de usuarios, la autenticación, la recuperación de acceso y la asignación de roles y permisos. Sus agregados son *User* y *Role*. Las reglas principales son que el correo de un usuario es único y que solo el dueño o un administrador puede asignar roles y permisos, atendiendo el pedido de control de accesos de los dueños entrevistados.
+
+![Design-Level Event Storming - IAM](./assets/chapter-04/01-iam.png)
+
+#### **Warehouse and Inventory Management (Core Domain)**
+
+Es el *Core Domain* de AI-ToDu y concentra la mayor cantidad de puntos críticos detectados en la Big Picture. Cubre las órdenes de compra y su aprobación, la recepción e inspección de mercadería, la cuarentena, los lotes y vencimientos, la ubicación física, los movimientos de stock, el conteo físico con sus ajustes y el registro de mermas y devoluciones. Sus agregados son *PurchaseOrder*, *InventoryItem*, *InventoryLot*, *WarehouseLocation* y *PhysicalCount*.
+
+![Design-Level Event Storming - Warehouse](./assets/chapter-04/02-warehouse.png)
+
+#### **Billing and Transactions**
+
+Administra clientes, ventas, pagos, comprobantes, cancelaciones y devoluciones. Su agregado principal es *CommercialTransaction*. La emisión de comprobantes se integra con SUNAT. Al agregar un producto a la venta se reserva su stock, al procesar el pago se descuenta, y al cancelar la venta se libera.
+
+![Design-Level Event Storming - Billing](./assets/chapter-04/03-billing.png)
+
+#### **Logistics and Dispatch**
+
+Gestiona el manifiesto de despacho, la asignación de mercadería, la selección de ruta (lista de *waypoints*), la salida, la telemetría recibida de dispositivos GPS/IoT y la confirmación de entrega. Su agregado es *ShipmentManifest*. Un manifiesto incompleto no puede despacharse.
+
+![Design-Level Event Storming - Logistics](./assets/chapter-04/04-logistics.png)
+
+#### **Integración entre Bounded Contexts**
+
+Los contextos se comunican mediante eventos de dominio y políticas, sin compartir agregados. Billing publica los eventos de la venta y Warehouse reacciona reservando, descontando o liberando stock. Logistics consulta la disponibilidad en Warehouse antes de asignar mercadería. *CommercialTransaction* mantiene una referencia lógica (`linkedManifestId`) al *ShipmentManifest*, tal como se detalla en la sección 4.7. El stock se descuenta una sola vez, al procesarse el pago; el despacho registra la salida física de mercadería ya vendida.
+
+![Integración entre Bounded Contexts](./assets/chapter-04/05-integration.png)
+
+
 ### **4.6.2. Software Architecture Context Diagram.**
 
 El diagrama de contexto representa el primer nivel del modelo C4 y permite visualizar a AI-ToDu como un sistema de software central dentro de su entorno operativo. Su propósito es identificar a los principales actores que interactúan con la plataforma, así como los sistemas externos necesarios para complementar sus funcionalidades, sin profundizar todavía en su estructura técnica interna.

@@ -1,0 +1,43 @@
+' Estilo comun para Design-Level EventStorming (AI-ToDu)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam ArrowColor #555555
+skinparam ArrowThickness 1.3
+skinparam rectangle {
+  BorderColor #8A8A8A
+  RoundCorner 6
+  StereotypeFontSize 10
+  StereotypeFontColor #555555
+}
+skinparam rectangle<<actor>> {
+  BackgroundColor #FFF9C4
+}
+skinparam rectangle<<command>> {
+  BackgroundColor #A7C7E7
+}
+skinparam rectangle<<aggregate>> {
+  BackgroundColor #FFE666
+}
+skinparam rectangle<<event>> {
+  BackgroundColor #FFB570
+}
+skinparam rectangle<<policy>> {
+  BackgroundColor #D7B7F0
+}
+skinparam rectangle<<readmodel>> {
+  BackgroundColor #B5E3A1
+}
+skinparam rectangle<<external>> {
+  BackgroundColor #F7A8C8
+}
+skinparam rectangle<<rule>> {
+  BackgroundColor #F2F2F2
+  BorderColor #BDBDBD
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9E9E9E
+  FontSize 14
+  FontStyle bold
+}

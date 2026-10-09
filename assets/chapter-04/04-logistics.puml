@@ -1,0 +1,86 @@
+@startuml 04-logistics
+!include style.iuml
+title Logistics and Dispatch
+left to right direction
+
+package "Shipment manifest" {
+  rectangle "Dispatch Manager" <<actor>> as f1_a
+  rectangle "Create Shipment Manifest" <<command>> as f1_c
+  rectangle "ShipmentManifest" <<aggregate>> as f1_g
+  rectangle "Shipment Manifest Created" <<event>> as f1_e
+  rectangle "Dispatch Operator" <<actor>> as f1_a2
+  rectangle "Assign Merchandise" <<command>> as f1_c2
+  rectangle "ShipmentManifest" <<aggregate>> as f1_g2
+  rectangle "Merchandise Assigned" <<event>> as f1_e2
+  rectangle "Quarantined items or insufficient stock\ncannot be assigned (US31, US32)" <<rule>> as f1_r
+  f1_a --> f1_c
+  f1_c --> f1_g
+  f1_g --> f1_e
+  f1_e --> f1_a2
+  f1_a2 --> f1_c2
+  f1_c2 --> f1_g2
+  f1_g2 --> f1_e2
+  f1_g2 .. f1_r
+}
+
+package "Route" {
+  rectangle "Dispatch Manager" <<actor>> as f2_a
+  rectangle "Select Route" <<command>> as f2_c
+  rectangle "ShipmentManifest" <<aggregate>> as f2_g
+  rectangle "Route Selected" <<event>> as f2_e
+  rectangle "A route is a list of waypoints;\nunavailable routes are rejected (US33)" <<rule>> as f2_r
+  f2_a --> f2_c
+  f2_c --> f2_g
+  f2_g --> f2_e
+  f2_g .. f2_r
+}
+
+package "Dispatch" {
+  rectangle "Dispatch Operator" <<actor>> as f3_a
+  rectangle "Dispatch Merchandise" <<command>> as f3_c
+  rectangle "ShipmentManifest" <<aggregate>> as f3_g
+  rectangle "Merchandise Dispatched" <<event>> as f3_e
+  rectangle "An incomplete manifest\ncannot be dispatched (US34)" <<rule>> as f3_r
+  f3_a --> f3_c
+  f3_c --> f3_g
+  f3_g --> f3_e
+  f3_g .. f3_r
+}
+
+package "Telemetry" {
+  rectangle "GPS / IoT Device" <<external>> as f4_x
+  rectangle "Update Telemetry" <<command>> as f4_c
+  rectangle "ShipmentManifest" <<aggregate>> as f4_g
+  rectangle "Telemetry Updated" <<event>> as f4_e
+  rectangle "Data from unregistered devices\nis rejected (US54)" <<rule>> as f4_r
+  f4_x --> f4_c
+  f4_c --> f4_g
+  f4_g --> f4_e
+  f4_g .. f4_r
+}
+
+package "Delivery" {
+  rectangle "Dispatch Manager" <<actor>> as f5_a
+  rectangle "Confirm Delivery" <<command>> as f5_c
+  rectangle "ShipmentManifest" <<aggregate>> as f5_g
+  rectangle "Delivery Confirmed" <<event>> as f5_e
+  f5_a --> f5_c
+  f5_c --> f5_g
+  f5_g --> f5_e
+}
+
+package "Read models" {
+  rectangle "Shipment Manifest View" <<readmodel>> as rm0
+  rectangle "Shipment Tracking View" <<readmodel>> as rm1
+  rectangle "Route View" <<readmodel>> as rm2
+  rectangle "Telemetry View" <<readmodel>> as rm3
+  rectangle "Delivery Status View" <<readmodel>> as rm4
+}
+
+' Orden vertical de los flujos (de arriba hacia abajo)
+f5_a -[hidden]left-> f4_x
+f4_x -[hidden]left-> f3_a
+f3_a -[hidden]left-> f2_a
+f2_a -[hidden]left-> f1_a
+f5_a -[hidden]left-> rm0
+@enduml

@@ -1,0 +1,42 @@
+@startuml 05-integration
+!include style.iuml
+title Integration between Bounded Contexts
+left to right direction
+
+package "Billing and Transactions" {
+  rectangle "Product Added To Transaction" <<event>> as b1
+  rectangle "Payment Processed" <<event>> as b2
+  rectangle "Transaction Cancelled" <<event>> as b3
+  rectangle "Return Registered" <<event>> as b4
+  rectangle "CommercialTransaction" <<aggregate>> as b5
+}
+
+package "Warehouse and Inventory Management" {
+  rectangle "Reserve Stock" <<command>> as w1
+  rectangle "Deduct Reserved Stock" <<command>> as w2
+  rectangle "Release Stock" <<command>> as w3
+  rectangle "Classify Returned Product" <<command>> as w4
+  rectangle "Inventory Stock View" <<readmodel>> as w5
+}
+
+package "Logistics and Dispatch" {
+  rectangle "Assign Merchandise" <<command>> as l1
+  rectangle "ShipmentManifest" <<aggregate>> as l2
+}
+
+rectangle "When a product is added,\nreserve its stock" <<policy>> as p1
+rectangle "When a payment is processed,\ndeduct the reserved stock" <<policy>> as p2
+rectangle "When a transaction is cancelled,\nrelease the reserved stock" <<policy>> as p3
+rectangle "When a return is registered,\nclassify the returned product" <<policy>> as p4
+
+b1 --> p1
+p1 --> w1
+b2 --> p2
+p2 --> w2
+b3 --> p3
+p3 --> w3
+b4 --> p4
+p4 --> w4
+l1 ..> w5 : checks available stock
+b5 ..> l2 : linkedManifestId\n(logical reference)
+@enduml
