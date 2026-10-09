@@ -1113,83 +1113,388 @@ Como resultado de la organización, definimos cuatro *Bounded Contexts* (Context
 ![](./assets/chapter-04/24.png)
 ### **4.6.2. Software Architecture Context Diagram.**
 
-El Diagrama de Contexto (Nivel 1 del Modelo C4) ilustra a AI-ToDu en el centro de su entorno operativo, mostrando las interacciones de alto nivel con los actores del sistema y los sistemas externos (terceros) obligatorios para la operación.
+El diagrama de contexto representa el primer nivel del modelo C4 y permite visualizar a AI-ToDu como un sistema de software central dentro de su entorno operativo. Su propósito es identificar a los principales actores que interactúan con la plataforma, así como los sistemas externos necesarios para complementar sus funcionalidades, sin profundizar todavía en su estructura técnica interna.
+AI-ToDu es una plataforma SaaS multiempresa orientada a la digitalización de los procesos operativos y administrativos de las micro y pequeñas empresas (MYPEs), integrando funcionalidades relacionadas con inventario, abastecimiento, ventas, logística y gestión empresarial.
+Actores del sistema:
+Visitante MYPE: Usuario potencial que accede a la plataforma para consultar la propuesta de valor, conocer sus funcionalidades y evaluar los planes de suscripción disponibles.
+Business Owner: Propietario o administrador de una MYPE que supervisa las operaciones del negocio, consulta indicadores de rendimiento, administra los recursos de su organización y gestiona su suscripción.
+Warehouse Operator: Personal operativo responsable de registrar productos, gestionar existencias, administrar movimientos de inventario y participar en los procesos de preparación y despacho de mercadería.
+Sales Clerk: Personal encargado de registrar clientes, gestionar transacciones comerciales, procesar pagos y consultar comprobantes de venta.
+Sistemas externos:
+SUNAT API: Representa la integración contemplada para los procesos relacionados con la facturación electrónica y la gestión de comprobantes tributarios.
+Email Gateway: Servicio externo utilizado para entregar notificaciones, alertas operativas y comunicaciones automáticas a los usuarios.
+IoT Telemetry Source: Fuente externa prevista para proporcionar mediciones procedentes de dispositivos tecnológicos, como información de ubicación y temperatura durante las operaciones logísticas.
+Las interacciones entre los actores y AI-ToDu se realizan mediante interfaces web accesibles desde navegadores de escritorio y dispositivos móviles. Por su parte, la comunicación con los servicios externos se contempla mediante interfaces de integración y protocolos de comunicación adecuados, principalmente HTTPS y servicios API.
+El diagrama permite comprender el alcance general de AI-ToDu, los usuarios involucrados y las dependencias externas de la solución. Asimismo, establece una visión de alto nivel que sirve como punto de partida para la descomposición técnica presentada en los diagramas de contenedores y componentes.
 
-Explicación del diagrama:
-
-* **Usuarios (Actors):** Identificamos al *Business Owner* (quien consume reportes y métricas) y al *Warehouse Operator* (quien ingresa datos de inventario y despachos).
-* **Sistema Central:** "AI-ToDu SaaS", que centraliza la operación.
-* **Sistemas Externos:** Para brindar una solución completa en Perú, el sistema se integra con la **SUNAT API** (para la validación y emisión de comprobantes de pago electrónicos obligatorios) y con un servicio de **Email Gateway** (ej. SendGrid o AWS SES) para el envío de alertas de stock mínimo a los dueños.
 
 ![](./assets/chapter-04/25.png)
 
 ### **4.6.3. Software Architecture Container Diagrams.**
 
-El Diagrama de Contenedores (Nivel 2 del Modelo C4) descompone el sistema central en unidades de despliegue independientes, reflejando nuestras decisiones tecnológicas y de infraestructura.
+El diagrama de contenedores corresponde al segundo nivel del modelo C4 y representa la organización técnica de AI-ToDu mediante sus principales aplicaciones, servicios y mecanismos de almacenamiento. Su objetivo es identificar las responsabilidades de cada contenedor, las tecnologías utilizadas y las relaciones de comunicación que permiten el funcionamiento de la plataforma.
+La arquitectura propuesta de AI-ToDu se organiza en cuatro contenedores principales:
+Landing Page
+Sitio web desarrollado mediante HTML5, CSS3 y JavaScript, encargado de presentar la propuesta de valor de AI-ToDu, sus funcionalidades y los planes de suscripción disponibles. Su propósito es facilitar el conocimiento del producto y orientar a los potenciales clientes hacia el proceso de registro.
+Web Application (SPA)
+Aplicación web desarrollada mediante Vue.js y JavaScript, siguiendo el enfoque Single-Page Application (SPA). Proporciona una interfaz responsiva desde la cual los usuarios pueden gestionar inventarios, compras, ventas, despachos, reportes y funcionalidades administrativas. También incorpora componentes de navegación, gestión de sesión y protección de rutas.
+RESTful API
+Backend desarrollado mediante Java y Spring Boot, encargado de procesar las solicitudes de la aplicación web, ejecutar los casos de uso y coordinar las reglas del negocio. Incorpora Spring Security para implementar mecanismos de autenticación y autorización mediante JSON Web Tokens (JWT).
+El backend adopta una arquitectura de monolito modular basada en Domain-Driven Design (DDD), organizando las responsabilidades del sistema en nueve Bounded Contexts:
+Warehouse & Inventory: Gestión de productos, almacenes, lotes, existencias y movimientos de inventario. Constituye el Core Domain de AI-ToDu.
+Procurement: Administración de proveedores, órdenes de compra, aprobaciones y recepción de mercadería.
+Sales & Billing: Gestión de clientes, transacciones comerciales, pagos, comprobantes electrónicos y devoluciones.
+Logistics & Dispatch: Administración de manifiestos, rutas, preparación de despachos y seguimiento de entregas.
+Reporting & Intelligence: Generación de dashboards, indicadores, reportes operativos y capacidades de análisis.
+Automation & Notifications: Configuración de reglas automáticas, generación de alertas y administración de notificaciones.
+Integrations & IoT: Gestión de integraciones con servicios externos, dispositivos tecnológicos y recepción de telemetría.
+SaaS Management: Administración de organizaciones, planes de suscripción y límites de utilización de la plataforma.
+Identity and Access Management (IAM): Gestión de identidades, autenticación, roles, permisos y auditoría.
+Los nueve Bounded Contexts representan divisiones lógicas dentro de una misma aplicación backend y no constituyen microservicios independientes. Esta separación permite organizar las responsabilidades del dominio, establecer límites funcionales y favorecer una comunicación controlada mediante contratos internos y eventos de dominio.
+PostgreSQL Database
+Sistema gestor de bases de datos relacional encargado de almacenar y administrar la información de AI-ToDu. Su diseño utiliza esquemas independientes asociados a los nueve Bounded Contexts, permitiendo separar lógicamente los datos de cada dominio.
+La estructura contempla identificadores de organización para mantener el aislamiento lógico de la información entre las distintas MYPEs que utilizan la plataforma. Asimismo, incorpora claves primarias, claves foráneas y restricciones de integridad dentro de cada esquema, evitando dependencias directas de persistencia entre contextos delimitados.
+Comunicación entre contenedores
+La Web Application se comunica con la RESTful API mediante solicitudes HTTPS, utilizando servicios REST y estructuras de intercambio de datos JSON. El backend procesa las operaciones solicitadas y accede a PostgreSQL mediante mecanismos de persistencia compatibles con Spring Boot, como Spring Data JPA y JDBC.
+Adicionalmente, AI-ToDu contempla integraciones externas relacionadas con la facturación electrónica mediante servicios vinculados a SUNAT, el envío de notificaciones a través de un Email Gateway y, como capacidad futura, la recepción de datos procedentes de dispositivos IoT.
+Esta organización proporciona una base arquitectónica modular, mantenible y adaptable al crecimiento del producto. Asimismo, permite desarrollar progresivamente las funcionalidades de AI-ToDu, manteniendo una separación clara entre la presentación, la lógica del negocio y la persistencia de información.
 
-Explicación del diagrama:
-
-* **Landing Page (Static Web Site):** Desarrollado en HTML5, CSS3 y JavaScript, alojado de forma independiente (ej. GitHub Pages o Vercel) para la captación de clientes.
-* **Web Application (Single-Page Application):** Desarrollada con el framework Angular y TypeScript. Se comunica con el backend exclusivamente mediante llamadas HTTP asíncronas.
-* **RESTful API (Backend Application):** Desarrollada en C\# utilizando el framework Spring Boot. Este contenedor expone los *Endpoints* consumidos por la aplicación frontend y orquesta la lógica de negocio de los *Bounded Contexts*.
-* **Database (Relational RDBMS):** Base de datos principal (ej. PostgreSQL o MySQL) que persiste el estado de los *Aggregates*.
 
 ![](./assets/chapter-04/26.png)
 
 ### **4.6.4. Software Architecture Components Diagrams.**
 
-El Diagrama de Componentes (Nivel 3 del Modelo C4) hace "zoom" dentro del contenedor del **RESTful API** para detallar sus bloques estructurales internos y la aplicación del diseño modular.
+Los diagramas de componentes representan el tercer nivel del modelo C4 y permiten profundizar en la organización interna de los contenedores principales de AI-ToDu. Para facilitar la comprensión de la arquitectura, se presentan los componentes del frontend y backend de manera independiente.
+En el backend se aplica una arquitectura de monolito modular basada en Domain-Driven Design, donde las responsabilidades del negocio se distribuyen en nueve Bounded Contexts. Esta separación busca favorecer la cohesión funcional, reducir el acoplamiento y facilitar el mantenimiento y la evolución de la plataforma.
 
-*Explicación del diagrama:* Cada *Bounded Context* se implementa como un módulo dentro de Spring Boot. Por ejemplo, el módulo de Inventario (*Warehouse*) muestra cómo las solicitudes HTTP entrantes son recibidas por el InventoryController, delegadas al InventoryService (donde reside la lógica de negocio) y finalmente cómo el InventoryRepository interactúa con la base de datos a través de Spring Data JPA. También se visualiza el componente SecurityFilter encargado de validar los tokens de acceso de cada petición (IAM).
+Frontend Components by Functional Area
+A continuación, se presentan los diagramas de componentes detallados del contenedor Web Application (SPA) de AI-ToDu, desarrollado mediante Vue.js y JavaScript.
+La aplicación frontend se organiza en nueve áreas funcionales alineadas con los Bounded Contexts definidos en el backend, comenzando por Warehouse & Inventory, identificado como Core Domain, y finalizando con Identity and Access Management (IAM), debido a su naturaleza transversal.
+Cada diagrama representa los principales componentes de interfaz, los mecanismos de gestión de estado y los servicios responsables de comunicarse con la RESTful API. Esta organización permite mantener separadas las responsabilidades de presentación y las reglas del negocio.
+Asimismo, se utiliza un cliente REST compartido para centralizar la comunicación mediante HTTPS y JSON con el backend desarrollado en Java y Spring Boot. La autenticación y autorización definitivas se realizan del lado del servidor mediante Spring Security.
+Los diagramas representan la arquitectura propuesta para la implementación progresiva de la aplicación web y no implican que todas las funcionalidades se encuentren desarrolladas en esta etapa del proyecto.
 
-(Insertar imagen: Diagrama de Componentes (Nivel 3\) mostrando Controladores, Servicios y Repositorios en Spring Boot )
+![](./assets/chapter-04/27.png)
 
-* sku, dimensionalWeight) tienen modificadores de acceso private para evitar 4.7. Software Object-Oriented Design.
+Frontend — Warehouse & Inventory Components
+La vista de inventario agrupa el catálogo de artículos, la administración de lotes y ubicaciones, el registro de movimientos, los conteos físicos y la clasificación de mercadería en cuarentena. Un store de interfaz centraliza el estado presentado y los filtros, mientras que Warehouse API Service canaliza las solicitudes mediante el cliente REST compartido. Las validaciones definitivas de stock y las reglas de negocio permanecen en el backend Warehouse, identificado como Core Domain.
 
-En esta sección detallamos cómo los conceptos teóricos descubiertos en el Event Storming y estructurados en nuestra arquitectura (DDD) se traducen en artefactos de código concretos mediante el Diseño Orientado a Objetos (POO). El objetivo principal de nuestro diseño es proteger los "Invariantes" (reglas de negocio) encapsulando el estado de los objetos y exponiendo únicamente comportamientos (métodos) con significado para el dominio.
+![](./assets/chapter-04/28.png)
 
-![](./assets/chapter-04/27.png)![](./assets/chapter-04/28.png)![](./assets/chapter-04/29.png)![](./assets/chapter-04/30.png) 4.7.1. Class Diagrams.
+Frontend — Procurement Components
+El área de compras contiene componentes para administrar proveedores, consultar y preparar órdenes, revisar aprobaciones y registrar recepciones completas o parciales. Procurement UI Store mantiene el estado de los formularios y resultados de búsqueda, mientras que Procurement API Service centraliza las solicitudes hacia la RESTful API. La confirmación de compras y las operaciones que impactan el stock son coordinadas por el backend mediante los contratos entre Procurement y Warehouse.
 
-A continuación, presentamos los Diagramas de Clases UML para los Bounded Contexts principales de nuestro backend en Spring Boot (Java), mapeando las interfaces definidas en nuestro frontend (TypeScript) hacia clases de dominio robustas.
+![](./assets/chapter-04/29.png)
 
-* Warehouse Context (Gestión de Inventario):
-  * La clase InventoryItem actúa como el Aggregate Root. Sus atributos (ej. modificaciones externas directas.
-  * En lugar de simples "setters", la clase expone métodos de dominio como updateConservationStatus(ConservationStatus newStatus) que validan las reglas de negocio antes de mutar el estado.
-  * Utiliza la enumeración ConservationStatus.
-* **Logistics Context (Despacho y Trazabilidad):**
-  * La clase ShipmentManifest es el **Aggregate Root**.
-  * Contiene a IoTTelemetry como un **Value Object** (Objeto de Valor). En POO, esto significa que IoTTelemetry es una clase inmutable (solo lectura tras su creación) y carece de un ID propio, ya que su identidad depende totalmente del ShipmentManifest al que pertenece.
-  * Expone métodos como addWaypoint(String waypoint) y dispatchFleet().
-* **Billing Context (Facturación):**
-  * La clase CommercialTransaction es el **Aggregate Root**.
-  * Para mantener el desacoplamiento estricto que exige DDD, esta clase almacena una referencia lógica (linkedManifestId de tipo String/UUID) en lugar de tener una relación de objeto directa con ShipmentManifest. Esto permite que el módulo de Facturación evolucione independientemente del de Logística.
-  * Expone métodos como calculateTaxes() que encapsulan la lógica impositiva.
+Frontend — Sales & Billing Components
+La interfaz comercial presenta componentes para clientes, carrito de venta, registro de pagos, consulta de comprobantes electrónicos y devoluciones. Sales UI Store mantiene el estado temporal de la transacción y Sales API Service envía las solicitudes al backend. La reserva de existencias, el cálculo de importes y la emisión efectiva de comprobantes no se implementan como reglas definitivas en Vue.js: corresponden a Sales & Billing y a su integración autorizada con los demás contextos.
+
+![](./assets/chapter-04/30.png) 
+
+Frontend — Logistics & Dispatch Components
+La interfaz logística agrupa la preparación de manifiestos, asignación de mercadería, planificación de rutas, seguimiento y confirmación de entregas. Logistics UI Store conserva el estado de los borradores y filtros; Logistics API Service realiza las solicitudes REST correspondientes. El servidor verifica disponibilidad, autoriza la salida y garantiza la trazabilidad del despacho, evitando que el frontend modifique directamente las existencias.
+
+![](./assets/chapter-04/31.png)
+
+Frontend — Reporting & Intelligence Components
+Los componentes de reportes permiten presentar dashboards, indicadores de inventario y ventas, filtros de consulta y una vista prevista para predicciones de demanda. Reporting UI Store administra filtros y datos visualizados, y Reporting API Service recupera métricas y solicitudes de exportación desde la API. Los cálculos financieros y procesos de análisis se ejecutan en el backend. Demand Forecast Panel se incluye como funcionalidad proyectada y no como evidencia de inteligencia artificial implementada.
+
+![](./assets/chapter-04/32.png)
+
+
+Frontend — Automation & Notifications Components
+Esta vista contiene componentes para configurar reglas, administrar condiciones, consultar alertas, revisar ejecuciones y configurar preferencias de notificación. Automation UI Store sincroniza el estado de las vistas y Automation API Service comunica las operaciones a la RESTful API. La evaluación de condiciones, generación de alertas y entrega por correo son responsabilidades del backend y del proveedor externo de mensajería.
+
+![](./assets/chapter-04/33.png)
+
+
+Frontend — Integrations & IoT Components
+El frontend de integraciones agrupa la configuración de conexiones externas, dispositivos, consulta de telemetría y seguimiento de envíos de comprobantes. Integrations UI Store gestiona estados de conectividad y filtros, mientras que Integrations API Service comunica los cambios a la API. Las credenciales sensibles, las llamadas a SUNAT y la recepción autorizada de telemetría deben gestionarse en el backend; el monitor de IoT se presenta como capacidad proyectada.
+
+![](./assets/chapter-04/34.png)
+
+
+Frontend — SaaS Management Components
+La interfaz SaaS contiene el catálogo de planes, el perfil de organización, las suscripciones, el consumo y los límites disponibles. SaaS UI Store presenta el estado de la organización seleccionada y SaaS API Service recupera o envía las operaciones a la API. El control real de límites y el aislamiento de datos entre MYPEs se aplican del lado del servidor, no únicamente en los componentes Vue.
+
+![](./assets/chapter-04/35.png)
+
+
+Frontend — Identity and Access Management (IAM) Components
+El frontend IAM presenta los formularios de acceso y recuperación, la administración de usuarios, roles, permisos y la consulta de auditoría. IAM UI Store maneja únicamente el estado de la interfaz, mientras que IAM API Service realiza solicitudes de identidad a la RESTful API. Route Guard contribuye a la navegación protegida y Session Store conserva el estado de sesión; la autenticación real y la autorización de cada endpoint corresponden a Spring Security en el backend. IAM se presenta al final por ser una capacidad transversal.
+
+![](./assets/chapter-04/36.png)
+
+
+Backend Components Overview
+El backend de AI-ToDu se estructura mediante una arquitectura de monolito modular desarrollada con Java y Spring Boot. Sus funcionalidades se encuentran organizadas en nueve Bounded Contexts, cada uno encargado de gestionar responsabilidades específicas del negocio.
+Esta organización permite establecer límites entre los diferentes dominios y promover una comunicación controlada mediante contratos internos y eventos de dominio. Adicionalmente, se incorpora Spring Security para proteger los servicios RESTful y gestionar el acceso autorizado a las funcionalidades de la plataforma.
+El siguiente diagrama presenta una vista general de los componentes de entrada de los diferentes contextos y su relación con los mecanismos de seguridad
+
+![](./assets/chapter-04/37.png)
+
+
+Warehouse Components — Core Domain
+Warehouse constituye el dominio central de AI-ToDu, debido a que concentra las funcionalidades principales relacionadas con la administración de productos, control de existencias, lotes, movimientos de inventario y registro de mermas.
+Su arquitectura contempla componentes encargados de recibir solicitudes, coordinar los casos de uso y gestionar la persistencia de información. Asimismo, establece un contrato de disponibilidad de inventario que permite a otros Bounded Contexts consultar o solicitar operaciones sobre las existencias sin acceder directamente a sus repositorios.
+
+![](./assets/chapter-04/38.png)
+
+
+Procurement Components
+El Bounded Context Procurement administra los procesos de abastecimiento de las MYPEs, incluyendo el registro de proveedores, la generación de órdenes de compra, las aprobaciones y la recepción de mercadería.
+Su arquitectura permite coordinar las operaciones de adquisición y relacionarlas con Warehouse mediante contratos internos. De esta manera, las recepciones validadas pueden dar lugar a actualizaciones de inventario, manteniendo separadas las responsabilidades de compras y control de existencias.
+
+![](./assets/chapter-04/39.png)
+
+Sales & Billing Components
+El Bounded Context Sales & Billing concentra las funcionalidades relacionadas con la gestión de clientes, transacciones comerciales, pagos y generación de comprobantes.
+Los componentes de aplicación coordinan los procesos comerciales y utilizan contratos internos para interactuar con las capacidades de disponibilidad de inventario. Asimismo, la emisión de comprobantes se encuentra desacoplada mediante un contrato de facturación electrónica, cuya implementación se delega al contexto de integraciones.
+Esta separación evita incorporar directamente los detalles técnicos de sistemas externos dentro de las reglas comerciales.
+
+![](./assets/chapter-04/40.png)
+
+Logistics Components
+El Bounded Context Logistics administra los procesos relacionados con la preparación de despachos, generación de manifiestos, asignación de rutas y seguimiento de entregas.
+Su arquitectura permite coordinar las operaciones logísticas con Warehouse mediante el contrato de disponibilidad de inventario, evitando el acceso directo a sus mecanismos de persistencia. También contempla la publicación de eventos relacionados con el estado de los despachos, facilitando la comunicación con otras capacidades de la plataforma.
+
+![](./assets/chapter-04/41.png)
+
+Reporting & Intelligence Components
+El Bounded Context Reporting & Intelligence está orientado a proporcionar información para la toma de decisiones mediante dashboards, reportes operativos, indicadores financieros y capacidades analíticas.
+Su arquitectura contempla componentes encargados de atender consultas, calcular indicadores y acceder a proyecciones de datos. Además, se plantea la recepción de eventos de dominio para mantener actualizada la información utilizada en los reportes.
+Como parte de la evolución del producto, este contexto podrá incorporar funcionalidades de análisis predictivo y detección de anomalías basadas en información histórica del negocio.
+
+![](./assets/chapter-04/42.png)
+
+Automation & Notifications Components
+El Bounded Context Automation & Notifications se encarga de gestionar las reglas de automatización, la generación de alertas y el seguimiento de notificaciones relacionadas con las operaciones del negocio.
+Su funcionamiento contempla la recepción de eventos procedentes de otros contextos, permitiendo evaluar condiciones como niveles mínimos de inventario o situaciones que requieren atención.
+Además, incorpora un adaptador de correo electrónico para desacoplar los procesos internos de notificación del proveedor externo encargado de entregar los mensajes.
+
+![](./assets/chapter-04/43.png)
+
+Integrations & IoT Components
+El Bounded Context Integrations & IoT concentra las responsabilidades relacionadas con la conexión de AI-ToDu con sistemas externos y fuentes de información provenientes de dispositivos tecnológicos.
+Su arquitectura contempla componentes para configurar integraciones, recibir y normalizar información de telemetría y establecer comunicación con servicios autorizados de comprobantes electrónicos.
+Para reducir el acoplamiento, se utilizan contratos y adaptadores que aíslan las particularidades técnicas de los proveedores externos. Esta organización permitirá incorporar nuevas integraciones sin modificar directamente las reglas centrales del negocio.
+
+![](./assets/chapter-04/44.png)
+
+SaaS Management Components
+El Bounded Context SaaS Management administra las funcionalidades relacionadas con la operación de AI-ToDu como plataforma de software bajo suscripción.
+Sus responsabilidades incluyen la gestión de organizaciones, planes comerciales, suscripciones y límites de uso asociados a cada modalidad del servicio.
+La separación de estas responsabilidades permite mantener las reglas comerciales de la plataforma SaaS independientes de los procesos operativos que realizan las MYPEs, facilitando la administración de diferentes clientes empresariales.
+
+![](./assets/chapter-04/45.png)
+
+Identity and Access Management (IAM) Components
+El Bounded Context Identity and Access Management (IAM) concentra las responsabilidades de autenticación, administración de usuarios, asignación de roles y control de permisos dentro de AI-ToDu.
+Su arquitectura contempla componentes encargados de recibir las solicitudes de identidad, coordinar los casos de uso y gestionar la persistencia de usuarios y permisos.
+Adicionalmente, el backend utiliza Spring Security para validar la autenticación mediante JWT y aplicar controles de autorización sobre los endpoints protegidos.
+Este contexto se presenta al final debido a su carácter transversal, ya que proporciona capacidades de seguridad utilizadas por las demás funcionalidades del sistema.
+
+![](./assets/chapter-04/46.png)
+
+### **4.7.1. Class Diagrams**
+
+El diseño orientado a objetos de AI-ToDu se desarrolla siguiendo los principios de Domain-Driven Design (DDD), con el propósito de establecer una estructura de software organizada, mantenible y alineada con los procesos de negocio de las micro y pequeñas empresas (MYPEs).
+Para ello, se han definido nueve Bounded Contexts que permiten separar las responsabilidades del sistema y establecer límites claros entre sus distintos dominios. Cada contexto contiene clases que representan los principales conceptos del negocio, incluyendo Aggregate Roots, entidades, Value Objects y otros elementos necesarios para implementar sus funcionalidades.
+Los diagramas presentan atributos, métodos, relaciones y multiplicidades, permitiendo identificar las responsabilidades de cada clase y las reglas que debe cumplir. Asimismo, se emplean relaciones de composición para representar objetos pertenecientes a un mismo agregado y dependencias identificadas mediante <<ID>> para documentar referencias entre agregados independientes.
+En primer lugar, se presenta una vista general de los principales Aggregate Roots. Posteriormente, se desarrollan los diagramas de clases correspondientes a cada Bounded Context, comenzando por Warehouse como Core Domain y finalizando con Identity and Access Management (IAM), debido a su naturaleza transversal.
+
+#### **4.7.1.1 Aggregates Overview**
+El diagrama general de agregados proporciona una visión de alto nivel de los principales elementos del dominio de AI-ToDu y su distribución entre los nueve Bounded Contexts.
+Cada Aggregate Root representa el punto de entrada para realizar operaciones sobre un conjunto de objetos relacionados, siendo responsable de garantizar las reglas e invariantes del negocio.
+La separación de los agregados permite establecer límites de consistencia y evitar dependencias innecesarias entre los distintos contextos. Cuando existe una relación lógica entre agregados independientes, esta se representa mediante identificadores, sin establecer una asociación directa entre los objetos de dominio.
+Este enfoque proporciona una base para desarrollar los diagramas detallados y posteriormente definir la estructura de persistencia del sistema.
+
+![](./assets/chapter-04/47.png)
+
+#### **4.7.1.2. Warehouse Class Diagram**
+El Bounded Context Warehouse constituye el Core Domain de AI-ToDu, debido a que concentra las funcionalidades fundamentales de la plataforma relacionadas con la gestión de inventarios y el control de existencias.
+Su modelo de dominio contempla clases como InventoryItem, encargada de representar los productos registrados; StockLot, responsable de administrar las existencias por lote; y StorageLocation, que permite identificar las ubicaciones físicas de almacenamiento.
+Asimismo, incorpora StockReservation para administrar las reservas de inventario, InventoryMovement para mantener la trazabilidad de entradas y salidas, y StockCount para organizar los procesos de conteo físico.
+Las relaciones entre estas clases permiten representar la composición de los agregados y las referencias necesarias para mantener la consistencia de las operaciones. Los atributos y métodos definidos encapsulan reglas relacionadas con disponibilidad, movimientos, reservas y control del inventario.
+Esta organización busca asegurar que las modificaciones sobre las existencias se realicen mediante operaciones controladas, evitando inconsistencias en los registros de mercadería.
+
+![](./assets/chapter-04/48.png)
+
+#### **4.7.1.3. Procurement Class Diagram**
+El Bounded Context Procurement administra los procesos de compras y abastecimiento necesarios para mantener la disponibilidad de mercadería dentro de las MYPEs.
+Su diseño contempla la clase Supplier, responsable de representar a los proveedores; PurchaseOrder, encargada de gestionar las órdenes de compra; y GoodsReceipt, utilizada para registrar la recepción de mercadería.
+Las órdenes de compra incorporan entidades dependientes que permiten detallar los productos y cantidades solicitadas. De manera similar, las recepciones contienen sus respectivas líneas para registrar las cantidades recibidas.
+Las referencias entre proveedores, órdenes y recepciones se establecen mediante identificadores, conservando la independencia de sus respectivos agregados.
+Esta estructura permite controlar el ciclo de abastecimiento desde la creación de una orden de compra hasta la recepción de los productos, manteniendo separadas las responsabilidades de Procurement y Warehouse.
+
+![](./assets/chapter-04/49.png)
+
+
+#### **4.7.1.4. Sales & Billing Class Diagram**
+El Bounded Context Sales & Billing concentra las funcionalidades relacionadas con la gestión comercial de las MYPEs, incluyendo clientes, ventas, pagos, comprobantes electrónicos y devoluciones.
+El modelo incorpora CommercialTransaction como uno de sus principales Aggregate Roots, encargado de representar las operaciones de venta y administrar la información necesaria para calcular sus importes.
+Las entidades SaleLine representan los productos incluidos en cada transacción comercial. Asimismo, se incorporan las clases Payment, ElectronicReceipt y SalesReturn para gestionar los pagos, comprobantes y devoluciones de manera independiente.
+Las relaciones entre estos agregados se representan mediante identificadores, permitiendo conservar la trazabilidad de cada operación sin generar dependencias estructurales innecesarias.
+La organización propuesta facilita la implementación de reglas relacionadas con el cálculo de importes, estados de las transacciones, procesamiento de pagos y registro de devoluciones, manteniendo la coherencia del proceso comercial.
+
+![](./assets/chapter-04/50.png)
+
+
+#### **4.7.1.5. Logistics Class Diagram**
+El Bounded Context Logistics se encarga de administrar los procesos de preparación, distribución y seguimiento de mercadería desde su salida del almacén hasta la confirmación de entrega.
+Su principal Aggregate Root es ShipmentManifest, que representa el manifiesto de despacho y agrupa la información de los productos y las ubicaciones asociadas a una operación logística.
+El modelo incorpora las entidades ShipmentLine y Waypoint, utilizadas para representar los productos asignados al despacho y los puntos que conforman su recorrido.
+Asimismo, incluye TrackingUpdate para registrar las actualizaciones de seguimiento y objetos de valor como DeliveryConfirmation e IoTTelemetry, que permiten representar información relevante sobre la entrega y las condiciones del transporte.
+Las relaciones establecidas permiten organizar las responsabilidades del dominio logístico, manteniendo separados los registros históricos de seguimiento del agregado principal.
+Esta estructura proporciona una base para implementar la trazabilidad de despachos y el control de sus diferentes estados.
+
+![](./assets/chapter-04/51.png)
+
+#### **4.7.1.6. Reporting & Intelligence Class Diagram**
+El Bounded Context Reporting & Intelligence proporciona las capacidades necesarias para consultar, organizar y analizar la información generada por las operaciones de AI-ToDu.
+Su modelo contempla DashboardDefinition para administrar las configuraciones de los paneles de indicadores y ReportDefinition para representar las definiciones de los reportes disponibles.
+Asimismo, incorpora DashboardWidget como entidad asociada a los paneles, ReportExecution para registrar las ejecuciones de reportes y MetricSnapshot como modelo de lectura de información consolidada.
+Adicionalmente, se propone DemandForecast como un agregado destinado a futuras capacidades de predicción de demanda, acompañado de entidades que representan los resultados de las proyecciones.
+La separación entre modelos operativos y modelos de consulta permite plantear mecanismos de análisis sin comprometer directamente las responsabilidades de los demás Bounded Contexts.
+Esta arquitectura busca facilitar la generación de indicadores de inventario, ventas y rentabilidad, proporcionando información útil para la toma de decisiones empresariales.
+
+![](./assets/chapter-04/52.png)
+
+#### **4.7.1.7. Automation & Notifications Class Diagram**
+El Bounded Context Automation & Notifications administra las reglas y procesos automáticos que permiten reaccionar ante situaciones relevantes dentro de las operaciones del negocio.
+Su modelo incluye AutomationRule, encargada de definir las reglas de automatización, y RuleCondition, que representa las condiciones necesarias para su ejecución.
+Asimismo, se incorpora RuleExecution para registrar las ejecuciones realizadas y AlertNotification para administrar las notificaciones generadas.
+Las entidades DeliveryAttempt permiten mantener un seguimiento de los intentos de entrega de mensajes, favoreciendo la trazabilidad de los procesos de comunicación.
+Las relaciones entre agregados se establecen mediante identificadores, permitiendo que las reglas, sus ejecuciones y las notificaciones mantengan ciclos de vida independientes.
+Esta estructura proporciona una base para implementar alertas de stock mínimo, advertencias de vencimiento y otras automatizaciones orientadas a reducir las tareas manuales de las MYPEs.
+
+![](./assets/chapter-04/53.png)
+
+#### **4.7.1.8. Integrations & IoT Class Diagram**
+El Bounded Context Integrations & IoT concentra las responsabilidades relacionadas con la comunicación entre AI-ToDu y los sistemas o dispositivos externos que complementan las funcionalidades de la plataforma.
+Su modelo incorpora IntegrationConnection, responsable de representar las conexiones configuradas, y ConnectedDevice, que administra la información de los dispositivos asociados.
+Asimismo, contempla TelemetryReading y TelemetryPayload para representar las lecturas y los datos recibidos desde dispositivos IoT, como información de ubicación o temperatura.
+También se incorpora ElectronicSubmission para registrar las solicitudes relacionadas con el procesamiento de comprobantes electrónicos mediante integraciones autorizadas.
+Las referencias entre los agregados se realizan mediante identificadores, evitando que los detalles específicos de los proveedores externos se incorporen directamente en las entidades de los demás Bounded Contexts.
+Esta organización favorece la extensibilidad y proporciona una estructura para incorporar progresivamente capacidades de integración y telemetría.
+
+![](./assets/chapter-04/54.png)
+
+#### **4.7.1.9. SaaS Management Class Diagram**
+El Bounded Context SaaS Management administra las funcionalidades necesarias para ofrecer AI-ToDu bajo el modelo Software as a Service (SaaS).
+Su modelo incluye TenantOrganization, encargada de representar a las organizaciones que utilizan la plataforma, y SubscriptionPlan, que define los planes comerciales disponibles y sus características.
+Asimismo, se incorpora Subscription para gestionar las suscripciones de las organizaciones y UsageCounter para controlar los indicadores de consumo asociados a los límites establecidos.
+Las entidades PlanLimit permiten representar las restricciones correspondientes a cada modalidad de suscripción.
+Las relaciones entre organizaciones, planes y suscripciones se establecen mediante identificadores, manteniendo separados los ciclos de vida de estos agregados.
+Esta estructura permite plantear una plataforma multiempresa, en la que diferentes MYPEs puedan utilizar AI-ToDu con sus respectivas configuraciones y condiciones de suscripción.
+
+![](./assets/chapter-04/55.png)
+
+#### **4.7.1.10. Identity and Access Management (IAM) Class Diagram**
+El Bounded Context Identity and Access Management (IAM) administra los mecanismos de identidad, autenticación y autorización necesarios para proteger las funcionalidades de AI-ToDu.
+Su modelo contempla UserAccount, encargado de representar las cuentas de usuario, y Role, que permite definir los roles disponibles dentro del sistema.
+Asimismo, incorpora TenantMembership para gestionar la pertenencia de usuarios a las distintas organizaciones, utilizando RoleAssignment para representar sus asignaciones de roles.
+La entidad RolePermission permite organizar los permisos asociados a cada rol, mientras que AccessAuditEvent representa los registros necesarios para mantener la trazabilidad de las acciones relevantes.
+Las relaciones entre estas clases permiten establecer un modelo de autorización compatible con una plataforma multiempresa, manteniendo una separación entre las cuentas de usuario y sus permisos dentro de cada organización.
+Este Bounded Context se presenta al final debido a su carácter transversal, ya que proporciona mecanismos de seguridad utilizados por los demás dominios de AI-ToDu.
+
+![](./assets/chapter-04/56.png)
 
 &nbsp;
 
-![](./assets/chapter-04/31.png)
-![](./assets/chapter-04/32.png)
-![](./assets/chapter-04/33.png)
-![](./assets/chapter-04/34.png)
+
 ## **4.8. Database Design.**
 
-El diseño de nuestra base de datos relacional (SQL Server) sigue la misma filosofía de separación por *Bounded Contexts*. Para evitar el acoplamiento a nivel de base de datos (el antipatrón "Big Ball of Mud"), cada contexto delimitado es dueño de sus propias tablas, y las referencias cruzadas se manejan de forma blanda (mediante identificadores alfanuméricos) en lugar de *Foreign Keys* estrictas a nivel de motor de base de datos.
+El diseño de nuestra base de datos relacional (PostgreSQL) sigue la misma filosofía de separación por Bounded Contexts. Para evitar el acoplamiento a nivel de base de datos (el antipatrón "Big Ball of Mud"), cada contexto delimitado es dueño de sus propias tablas, y las referencias cruzadas se manejan de forma blanda (mediante identificadores alfanuméricos) en lugar de Foreign Keys estrictas a nivel de motor de base de datos.
+
 
 ### **4.8.1. Database Diagrams.**
 
-Hemos utilizado Spring Data JPA para el mapeo objeto-relacional (ORM), lo que se refleja en nuestros Diagramas de Base de Datos (ERD):
+El diseño de base de datos de AI-ToDu se desarrolla utilizando PostgreSQL como sistema gestor de bases de datos relacional. Su estructura se organiza mediante esquemas independientes que representan los nueve Bounded Contexts definidos en la arquitectura Domain-Driven Design.
+Esta organización permite separar lógicamente la información de cada dominio, establecer relaciones mediante claves primarias y foráneas, e incorporar restricciones que contribuyen a garantizar la integridad de los datos.
 
-* **Esquema WAREHOUSE:**
-  * Tabla inventory\_items: La llave primaria (id) es un UUID. Los estados del Enum (conservation\_status) se persisten como cadenas de texto (VARCHAR) para mayor legibilidad y mantenibilidad.
-* **Esquema LOGISTICS:**
-  * Tabla shipment\_manifests: Almacena la data central del despacho.
-  * Debido a que IoTTelemetry es un *Value Object*, no tiene su propia tabla. En su lugar, hemos aplicado el patrón @Embedded de JPA, por lo que sus atributos (latitude, longitude, temperature\_celsius) se "aplanan" y se guardan como columnas directamente dentro de la tabla shipment\_manifests.
-  * Tabla manifest\_waypoints (1:N): Tabla dependiente para almacenar la lista de strings de las rutas.
-* **Esquema BILLING:**
-  * Tabla commercial\_transactions: Almacena el subtotal, impuestos y total de la venta.
-  * Incluye la columna linked\_manifest\_id (VARCHAR), la cual actúa como una referencia lógica al despacho, respetando la autonomía del esquema de ventas sin generar bloqueos en cascada en la base de datos.
+Warehouse Database Diagram
+El esquema Warehouse representa la estructura de persistencia del dominio central de AI-ToDu. Incluye las tablas necesarias para administrar almacenes, productos, ubicaciones físicas, lotes, reservas de mercadería, movimientos de inventario y conteos físicos.
+Las relaciones entre estas tablas permiten mantener la trazabilidad de las existencias y asociar los movimientos con sus respectivos lotes. Asimismo, se incorporan restricciones de integridad y validaciones de cantidades para reducir inconsistencias en los registros.
+El diseño considera la separación de información por organización mediante identificadores de empresa, proporcionando una base para la operación multiempresa de la plataforma SaaS.
 
-![](./assets/chapter-04/35.png)
+
+![](./assets/chapter-04/57.png)
+
+Procurement Database Diagram
+El esquema Procurement representa la estructura de persistencia de los procesos de compras y abastecimiento de AI-ToDu. Su diseño incluye las tablas necesarias para administrar proveedores, órdenes de compra, detalles de productos solicitados y recepciones de mercadería.
+Las relaciones entre las tablas permiten mantener la trazabilidad de las adquisiciones, asociando cada orden de compra con su respectivo proveedor y cada recepción con los productos solicitados.
+Asimismo, se incorporan claves primarias, claves foráneas y restricciones de integridad para mantener la consistencia de los registros. El modelo utiliza identificadores para establecer referencias lógicas con otros Bounded Contexts, conservando la independencia de sus responsabilidades.
+
+![](./assets/chapter-04/58.png)
+
+Sales & Billing Database Diagram
+El esquema Sales & Billing representa la estructura de persistencia de los procesos comerciales de AI-ToDu, incluyendo la gestión de clientes, ventas, pagos, emisión de comprobantes electrónicos y devoluciones.
+El diseño contempla siete tablas relacionadas mediante claves primarias y foráneas que permiten mantener la integridad referencial de las transacciones. La tabla Commercial Transactions constituye el registro central de las ventas, mientras que Sale Lines almacena el detalle de los productos comercializados.
+Asimismo, las tablas Payments y Electronic Receipts permiten registrar los pagos y comprobantes asociados a cada transacción. Por su parte, Sales Returns y Return Lines proporcionan trazabilidad sobre los productos devueltos y sus respectivas cantidades.
+Las relaciones incluyen restricciones destinadas a evitar inconsistencias entre los registros de una misma organización. Además, las referencias hacia otros Bounded Contexts se realizan mediante identificadores, respetando los límites establecidos por Domain-Driven Design.
+Esta estructura facilita la gestión comercial y proporciona información para los procesos de análisis financiero, control de inventario y seguimiento de operaciones.
+
+![](./assets/chapter-04/59.png)
+
+Logistics & Dispatch Database Diagram
+El esquema Logistics & Dispatch representa la estructura de persistencia de los procesos logísticos de AI-ToDu, permitiendo gestionar la preparación de despachos, la asignación de mercadería, las rutas de distribución y el seguimiento de las entregas.
+Su diseño contempla cuatro tablas principales. Shipment Manifests constituye el registro central de los despachos y almacena su estado, fechas relevantes e información de confirmación de entrega. Shipment Lines permite registrar los productos y cantidades asignadas a cada manifiesto, mientras que Manifest Waypoints administra los puntos que conforman las rutas de distribución.
+Por su parte, Tracking Updates conserva el historial de seguimiento de los despachos, incluyendo información de ubicación y temperatura cuando se dispone de datos de telemetría.
+Las relaciones internas se establecen mediante claves primarias y foráneas, manteniendo una estructura de uno a muchos entre los manifiestos y sus respectivos detalles, puntos de ruta y actualizaciones de seguimiento.
+Asimismo, las referencias hacia otros Bounded Contexts se realizan mediante identificadores, evitando dependencias directas entre sus modelos de persistencia y respetando los principios de Domain-Driven Design.
+Esta estructura proporciona una base para mantener la trazabilidad de los despachos y facilitar el control de las operaciones de distribución de las MYPEs.
+
+![](./assets/chapter-04/60.png)
+
+Reporting & Intelligence Database Diagram
+El esquema Reporting & Intelligence representa la estructura de persistencia de las funcionalidades de análisis, visualización de indicadores y generación de reportes de AI-ToDu. Su diseño permite organizar información relacionada con el desempeño operativo y financiero de las MYPEs, facilitando el acceso a datos relevantes para la toma de decisiones.
+El modelo contempla siete tablas principales. Dashboard Definitions almacena las configuraciones de los paneles de control, mientras que Dashboard Widgets contiene los indicadores y elementos visuales asociados a cada panel.
+Por otro lado, Report Definitions permite definir los tipos de reportes y sus filtros, mientras que Report Executions registra el historial de generación y exportación de documentos. Asimismo, Metric Snapshots conserva valores calculados de los indicadores correspondientes a períodos específicos, funcionando como un modelo de lectura independiente de los procesos transaccionales.
+Adicionalmente, se incluyen las tablas Demand Forecasts y Forecast Points, que proporcionan una estructura de persistencia para futuras funcionalidades de predicción de demanda basadas en información histórica.
+Las relaciones internas se implementan mediante claves primarias y foráneas, mientras que las referencias hacia otros Bounded Contexts se mantienen mediante identificadores, respetando la separación de responsabilidades establecida por Domain-Driven Design.
+Esta organización proporciona una base para desarrollar dashboards, reportes financieros, análisis operativos y futuras capacidades de inteligencia de negocio dentro de AI-ToDu.
+
+![](./assets/chapter-04/61.png)
+
+Automation & Notifications Database Diagram
+El esquema Automation & Notifications representa la estructura de persistencia de las funcionalidades de automatización y notificaciones de AI-ToDu. Su diseño permite administrar reglas configurables, evaluar condiciones de negocio y mantener un registro de las ejecuciones realizadas por el sistema.
+El modelo contempla cinco tablas principales. Automation Rules almacena las reglas de automatización y sus configuraciones, mientras que Rule Conditions contiene las condiciones asociadas a cada regla, permitiendo establecer los criterios necesarios para su ejecución.
+Por su parte, Rule Executions registra el historial de ejecución de las reglas, incluyendo su estado y los eventos que originaron su procesamiento. Asimismo, Alert Notifications administra las notificaciones generadas para los usuarios, mientras que Delivery Attempts conserva la información correspondiente a los intentos de entrega mediante los canales disponibles.
+Las relaciones internas se establecen mediante claves primarias y foráneas, manteniendo asociaciones de uno a muchos entre las reglas y sus condiciones, las reglas y sus ejecuciones, y las notificaciones y sus intentos de entrega.
+Adicionalmente, se utilizan identificadores para establecer referencias lógicas hacia otros Bounded Contexts, como IAM y SaaS Management, respetando la separación de responsabilidades definida mediante Domain-Driven Design.
+Esta estructura proporciona una base para desarrollar alertas de stock mínimo, advertencias de vencimiento y procesos automáticos orientados a mejorar la eficiencia operativa de las MYPEs.
+
+![](./assets/chapter-04/62.png)
+
+Integrations & IoT Database Diagram
+El esquema Integrations & IoT representa la estructura de persistencia de las funcionalidades relacionadas con la integración de AI-ToDu con sistemas externos y dispositivos tecnológicos. Su diseño proporciona una base para administrar conexiones con proveedores de servicios, dispositivos IoT y registros de telemetría.
+El modelo contempla cuatro tablas principales. Integration Connections almacena la configuración de las conexiones externas, mientras que Connected Devices permite registrar los dispositivos asociados a cada integración.
+Por su parte, Telemetry Readings conserva las mediciones recibidas desde los dispositivos, incluyendo información de ubicación y temperatura. Asimismo, Electronic Submissions registra las solicitudes relacionadas con el procesamiento de comprobantes electrónicos mediante proveedores autorizados.
+Las relaciones internas se implementan mediante claves primarias y foráneas, estableciendo asociaciones de uno a muchos entre las conexiones y sus dispositivos, los dispositivos y sus lecturas de telemetría, y las conexiones y los envíos electrónicos.
+Además, se utilizan identificadores para establecer referencias lógicas hacia otros Bounded Contexts, como Logistics, Sales & Billing y SaaS Management, respetando la separación de responsabilidades definida mediante Domain-Driven Design.
+Esta estructura proporciona una base para incorporar progresivamente funcionalidades de integración, trazabilidad y automatización tecnológica dentro de AI-ToDu.
+
+![](./assets/chapter-04/63.png)
+
+SaaS Management Database Diagram
+El esquema SaaS Management representa la estructura de persistencia de las funcionalidades relacionadas con la administración de AI-ToDu como plataforma Software as a Service (SaaS). Su diseño permite gestionar las organizaciones registradas, los planes de suscripción, las condiciones del servicio y los límites de utilización de la plataforma.
+El modelo contempla cinco tablas principales. Tenant Organizations almacena la información de las MYPEs que utilizan el sistema, mientras que Subscription Plans contiene los diferentes planes comerciales ofrecidos por AI-ToDu.
+Por su parte, Plan Limits establece las restricciones y capacidades asociadas a cada plan, permitiendo definir límites de uso según las condiciones de suscripción. Asimismo, Subscriptions registra los planes contratados por cada organización, incluyendo sus períodos de vigencia y estados.
+Adicionalmente, Usage Counters permite llevar un seguimiento del consumo de recursos y funcionalidades de cada organización durante determinados períodos, proporcionando información necesaria para aplicar las restricciones definidas en los planes.
+Las relaciones internas se implementan mediante claves primarias y foráneas, estableciendo asociaciones de uno a muchos entre las organizaciones y sus suscripciones, los planes y sus límites, así como las organizaciones y sus registros de consumo.
+Esta estructura proporciona una base para ofrecer AI-ToDu a múltiples MYPEs, manteniendo una administración centralizada de suscripciones y condiciones comerciales, de acuerdo con los principios de Domain-Driven Design.
+
+![](./assets/chapter-04/64.png)
+
+Identity and Access Management (IAM) Database Diagram
+El esquema Identity and Access Management (IAM) representa la estructura de persistencia de los procesos de autenticación, autorización y gestión de usuarios de AI-ToDu. Su propósito es garantizar un control adecuado del acceso a las funcionalidades de la plataforma, considerando los diferentes roles y permisos de los usuarios dentro de cada organización.
+El diseño contempla seis tablas principales. User Accounts almacena la información de las cuentas de usuario y los hashes de sus contraseñas, mientras que Roles permite administrar los perfiles de acceso definidos para cada organización. Por su parte, Role Permissions registra los permisos asociados a cada rol, estableciendo las operaciones que pueden realizar los usuarios.
+Asimismo, Tenant Memberships administra la pertenencia de los usuarios a las distintas organizaciones registradas en AI-ToDu, mientras que Role Assignments permite asignar los roles correspondientes a cada membresía. Finalmente, Access Audit Events conserva los registros de acciones relevantes, proporcionando trazabilidad sobre las operaciones realizadas dentro del sistema.
+Las relaciones entre las tablas se establecen mediante claves primarias y foráneas, manteniendo la integridad referencial y evitando la asignación de roles pertenecientes a organizaciones diferentes. Además, se utilizan identificadores UUID para mantener las referencias lógicas hacia otros Bounded Contexts, respetando los principios de Domain-Driven Design (DDD).
+Esta estructura proporciona una base para implementar mecanismos de autenticación, autorización y auditoría, contribuyendo a la seguridad y administración de accesos dentro de la arquitectura multiempresa de AI-ToDu.
+
+![](./assets/chapter-04/65.png)
 
 # **Capítulo V: Product Implementation, Validation & Deployment**
 
