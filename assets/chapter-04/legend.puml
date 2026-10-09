@@ -1,0 +1,19 @@
+@startuml legend
+!include style.iuml
+title Design-Level EventStorming - Legend
+left to right direction
+rectangle "Actor" <<actor>> as l1
+rectangle "Command" <<command>> as l2
+rectangle "Aggregate" <<aggregate>> as l3
+rectangle "Domain Event" <<event>> as l4
+rectangle "Policy\n(whenever... then...)" <<policy>> as l5
+rectangle "Read Model" <<readmodel>> as l6
+rectangle "External System" <<external>> as l7
+rectangle "Business Rule" <<rule>> as l8
+l1 --> l2
+l2 --> l3
+l3 --> l4
+l4 --> l5
+l6 -[hidden]-> l7
+l7 -[hidden]-> l8
+@enduml

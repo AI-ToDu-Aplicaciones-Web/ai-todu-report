@@ -1,0 +1,102 @@
+@startuml 03-billing
+!include style.iuml
+title Billing and Transactions
+left to right direction
+
+package "Customers" {
+  rectangle "Salesperson" <<actor>> as f1_a
+  rectangle "Register Customer" <<command>> as f1_c
+  rectangle "Customer" <<aggregate>> as f1_g
+  rectangle "Customer Registered" <<event>> as f1_e
+  rectangle "Customers cannot be duplicated (US25)" <<rule>> as f1_r
+  f1_a --> f1_c
+  f1_c --> f1_g
+  f1_g --> f1_e
+  f1_g .. f1_r
+}
+
+package "Sale" {
+  rectangle "Salesperson" <<actor>> as f2_a
+  rectangle "Create Commercial Transaction" <<command>> as f2_c
+  rectangle "CommercialTransaction" <<aggregate>> as f2_g
+  rectangle "Commercial Transaction Created" <<event>> as f2_e
+  rectangle "Add Product To Transaction" <<command>> as f2_c2
+  rectangle "CommercialTransaction" <<aggregate>> as f2_g2
+  rectangle "Product Added To Transaction" <<event>> as f2_e2
+  rectangle "Reserve its stock\n(Warehouse)" <<policy>> as f2_p
+  rectangle "Products in Stock Out or quarantine\ncannot be added (US03, US16)" <<rule>> as f2_r
+  f2_a --> f2_c
+  f2_c --> f2_g
+  f2_g --> f2_e
+  f2_e --> f2_c2
+  f2_c2 --> f2_g2
+  f2_g2 --> f2_e2
+  f2_e2 --> f2_p
+  f2_g2 .. f2_r
+}
+
+package "Payment and invoice" {
+  rectangle "Salesperson" <<actor>> as f3_a
+  rectangle "Process Payment" <<command>> as f3_c
+  rectangle "CommercialTransaction" <<aggregate>> as f3_g
+  rectangle "Payment Processed" <<event>> as f3_e
+  rectangle "Deduct the reserved stock\n(Warehouse)" <<policy>> as f3_p
+  rectangle "Generate Invoice" <<command>> as f3_c2
+  rectangle "CommercialTransaction" <<aggregate>> as f3_g2
+  rectangle "Invoice Generated" <<event>> as f3_e2
+  rectangle "SUNAT" <<external>> as f3_x
+  rectangle "Payment must cover the total (US27)" <<rule>> as f3_r
+  rectangle "Only paid sales can be invoiced (US28)" <<rule>> as f3_r2
+  f3_a --> f3_c
+  f3_c --> f3_g
+  f3_g --> f3_e
+  f3_e --> f3_p
+  f3_g .. f3_r
+  f3_e --> f3_c2
+  f3_c2 --> f3_g2
+  f3_g2 --> f3_e2
+  f3_g2 .. f3_r2
+  f3_c2 ..> f3_x
+}
+
+package "Cancellation" {
+  rectangle "Salesperson" <<actor>> as f4_a
+  rectangle "Cancel Transaction" <<command>> as f4_c
+  rectangle "CommercialTransaction" <<aggregate>> as f4_g
+  rectangle "Transaction Cancelled" <<event>> as f4_e
+  rectangle "Release the reserved stock\n(Warehouse)" <<policy>> as f4_p
+  f4_a --> f4_c
+  f4_c --> f4_g
+  f4_g --> f4_e
+  f4_e --> f4_p
+}
+
+package "Returns" {
+  rectangle "Salesperson" <<actor>> as f5_a
+  rectangle "Register Return" <<command>> as f5_c
+  rectangle "CommercialTransaction" <<aggregate>> as f5_g
+  rectangle "Return Registered" <<event>> as f5_e
+  rectangle "Classify the returned product\n(Warehouse)" <<policy>> as f5_p
+  rectangle "Requires an existing sale (US38)" <<rule>> as f5_r
+  f5_a --> f5_c
+  f5_c --> f5_g
+  f5_g --> f5_e
+  f5_e --> f5_p
+  f5_g .. f5_r
+}
+
+package "Read models" {
+  rectangle "Sales History View" <<readmodel>> as rm0
+  rectangle "Transaction Detail View" <<readmodel>> as rm1
+  rectangle "Payment Status View" <<readmodel>> as rm2
+  rectangle "Invoice View" <<readmodel>> as rm3
+  rectangle "Sales Report View" <<readmodel>> as rm4
+}
+
+' Orden vertical de los flujos (de arriba hacia abajo)
+f5_a -[hidden]left-> f4_a
+f4_a -[hidden]left-> f3_a
+f3_a -[hidden]left-> f2_a
+f2_a -[hidden]left-> f1_a
+f5_a -[hidden]left-> rm0
+@enduml
