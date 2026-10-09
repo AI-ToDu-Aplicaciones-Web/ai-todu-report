@@ -58,7 +58,7 @@ Proyecto<br>
 
 &nbsp;
 
-El desarrollo y evolución de este informe de proyecto se gestiona de forma colaborativa a través de un repositorio de control de versiones en GitHub, perteneciente a la organización pública de nuestro equipo (IA-INNOVATION). El siguiente enlace lleva al URL del repositorio que se encuentra en nuestra organización pública: [https://github.com/AI-ToDu-Aplicaciones-Web](https://github.com/AI-ToDu-Aplicaciones-Web)&nbsp;
+El desarrollo y evolución de este informe de proyecto se gestiona de forma colaborativa a través de un repositorio de control de versiones en GitHub, perteneciente a la organización pública de nuestro equipo (IA-INNOVATION). El siguiente enlace lleva al URL del repositorio que se encuentra en nuestra organización pública: [https://ai-todu-aplicaciones-web.github.io/ai-todu-website/](https://ai-todu-aplicaciones-web.github.io/ai-todu-website/)&nbsp;
 
 Durante esta primera etapa (AV1), todos los miembros del equipo han colaborado en la redacción de los capítulos iniciales utilizando la sintaxis Markdown, aplicando flujos de trabajo basados en *branches* (ramas) para la redacción de cada sección y realizando *Pull Requests* para su revisión antes de la integración a la rama principal (main).
 
@@ -1756,29 +1756,263 @@ Durante este Sprint, el equipo utilizó GitHub para gestionar el código bajo el
 * **Diseño de Arquitectura y Tipado Estricto:** La IA no reemplazó la lógica de ingeniería humana, sino que actuó como asesor. Utilizamos ingeniería de prompts para generar la estructura de los Modelos de Dominio iniciales (Interfaces y Enums), asegurando un tipado fuerte y validando nuestras decisiones sobre el uso de *Lazy Loading* y *Feature Modules*.
 * **Documentación Automatizada:** La redacción técnica y el formato Markdown del propio informe fue co-creado con IA, permitiendo al equipo humano enfocarse en la lógica de negocio y las decisiones arquitectónicas mientras el modelo de lenguaje aplicaba los estándares de redacción corporativa.
 
-## Conclusiones
+## **Conclusiones**
+
 AI-ToDu presenta una solución orientada a resolver los problemas reales de gestión operativa que enfrentan las micro y pequeñas empresas en Perú, especialmente aquellas que gestionan inventario, ventas y despacho de manera manual o con herramientas fragmentadas. A partir del análisis de los segmentos objetivo, se identificó que los dueños y administradores requieren visibilidad, control y rentabilidad, mientras que los operarios necesitan rapidez, simplicidad y reducción de errores en procesos diarios. Esta diferencia de necesidades permite justificar la propuesta del producto como una plataforma SaaS integral, diseñada para apoyar tanto la toma de decisiones como la ejecución operativa.
 
 El desarrollo de herramientas como User Personas, User Task Matrix, User Journey Mapping y Big Picture Event Storming evidenció que la problemática principal no radica únicamente en la falta de tecnología, sino en la falta de una solución adaptada al contexto real de las MYPES. Los procesos basados en cuadernos, Excel, mensajes de WhatsApp y seguimiento manual generan pérdida de tiempo, errores en la trazabilidad, conflictos entre áreas y poca visibilidad financiera. En ese sentido, AI-ToDu se consolida como una alternativa viable para centralizar información, automatizar actividades repetitivas y mejorar la eficiencia general del negocio.
 
 Asimismo, el enfoque centrado en el usuario permitió definir una propuesta de valor clara: facilitar el control del inventario, optimizar el flujo de ventas, mejorar la logística y ofrecer reportes para la toma de decisiones. La arquitectura del sistema, el diseño de la interfaz y la priorización del backlog muestran que la solución responde a necesidades concretas del negocio y no a una idea tecnológica aislada. Esto refuerza la relevancia del proyecto, ya que conecta un problema operativo real con una propuesta sustentada en investigación, diseño y validación.
 
-### Conclusiones y recomendaciones
 El análisis realizado permite concluir que AI-ToDu puede convertirse en una herramienta estratégica para las MYPES que buscan digitalizar sus operaciones sin requerir sistemas complejos, costosos o difíciles de adoptar. Sin embargo, su éxito dependerá de la continuidad en la validación de las necesidades reales del usuario, así como de la capacidad del producto para mantener una experiencia intuitiva, confiable y escalable.
+
+### **Conclusiones y recomendaciones**
 
 Se recomienda continuar validando la propuesta con propietarios, administradores y operarios de almacén mediante entrevistas, pruebas de usabilidad y prototipos funcionales. Asimismo, es importante priorizar el desarrollo del módulo base de inventario y ventas, pues representa el mayor valor para los usuarios y el punto de partida más sólido para la adopción del sistema. También se sugiere reforzar aspectos como la seguridad de la información, la facilidad de onboarding, la integración con procesos reales del negocio y la generación de reportes que apoyen la toma de decisiones.
 
-### Conclusiones
+#### **Conclusiones principales**
+
 - AI-ToDu busca reducir la ineficiencia operativa de las MYPES mediante la digitalización de procesos clave como inventario, ventas y despacho.
 - Los dueños de negocio pueden beneficiarse de una mejor visibilidad financiera y operativa, evitando pérdidas por falta de control y decisiones basadas en información incompleta.
 - Los operarios de almacén pueden mejorar su productividad al reemplazar procesos manuales por herramientas más rápidas, claras y menos propensas a errores.
 - La integración de información entre inventario, ventas y logística representa el principal valor diferencial de la plataforma.
 - El enfoque centrado en el usuario y la validación de necesidades son elementos clave para garantizar la adopción real del sistema.
 - La propuesta tiene un alto potencial de impacto en micro y pequeñas empresas que aún operan con procesos tradicionales y desarticulados.
-### Recomendaciones
+
+#### **Recomendaciones de continuidad**
+
 - Validar constantemente las necesidades de usuarios y clientes potenciales a través de entrevistas, encuestas y pruebas de prototipo.
 - Priorizar el desarrollo del módulo de inventario como núcleo del producto, dado que resuelve la necesidad más crítica del segmento objetivo.
 - Diseñar una interfaz simple, clara y adaptable a dispositivos móviles para facilitar su uso por parte del personal operativo.
 - Incorporar alertas, dashboards y reportes visuales que permitan a los dueños monitorear el estado del negocio en tiempo real.
 - Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
 - Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
+- Explorar integraciones con servicios externos (SUNAT, proveedores de IoT, sistemas de pago) para ampliar las capacidades de la plataforma.
+
+# **Bibliografía**
+
+A continuación se presentan las referencias bibliográficas, webgrafías y estándares utilizados en la elaboración del presente informe:
+
+## **Referencias Académicas y Metodológicas**
+
+1. Beck, K., & Fowler, M. (2013). *Planning Extreme Programming*. Addison-Wesley Professional.
+2. Cockburn, A. (2004). *Crystal Clear: A Human-Powered Methodology for Small Teams*. Addison-Wesley.
+3. Cohn, M. (2009). *Succeeding with Agile: Software Development Using Scrum*. Addison-Wesley.
+4. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+5. Gothelf, J., & Seiden, J. (2013). *Lean UX: Applying Lean Principles to Improve User Experience*. O'Reilly Media.
+6. Highsmith, J. (2009). *Agile Project Management: Creating Innovative Products* (2nd ed.). Addison-Wesley.
+7. Nielsen, J., & Loranger, H. (2006). *Prioritizing Web Usability*. New Riders Publishing.
+8. Schwaber, K., & Beedle, M. (2002). *Agile Software Development with Scrum*. Prentice Hall.
+
+## **Estándares y Guías de Referencia**
+
+9. Google. (2023). *Google Java Style Guide*. Recuperado de: https://google.github.io/styleguide/javaguide.html
+10. Google. (2023). *Google TypeScript Style Guide*. Recuperado de: https://google.github.io/styleguide/tsguide.html
+11. Google. (2023). *Google HTML/CSS Style Guide*. Recuperado de: https://google.github.io/styleguide/htmlcssguide.html
+12. Angular Team. (2023). *Angular Coding Style Guide*. Recuperado de: https://angular.io/guide/styleguide
+13. Conventional Commits. (2023). *Conventional Commits Specification*. Recuperado de: https://www.conventionalcommits.org/
+14. Semantic Versioning. (2023). *Semantic Versioning 2.0.0*. Recuperado de: https://semver.org/
+15. Spring Boot Documentation. (2023). *Spring Boot Reference Documentation*. Recuperado de: https://spring.io/projects/spring-boot
+
+## **Fuentes Normativas y Regulatorias**
+
+16. SUNAT. (2024). *Facturación Electrónica en el Perú - Normativas y Requerimientos*. Recuperado de: https://www.sunat.gob.pe
+17. INEI. (2024). *Estadísticas de Micro y Pequeñas Empresas en el Perú*. Recuperado de: https://www.inei.gob.pe
+18. Ministerio de la Producción. (2024). *Información Estadística sobre MYPES*. Recuperado de: https://www.produce.gob.pe
+
+## **Herramientas y Plataformas Utilizadas**
+
+19. Atlassian. (2023). *Jira Project Management*. Recuperado de: https://www.atlassian.com/software/jira
+20. Figma. (2023). *Figma Design Platform*. Recuperado de: https://www.figma.com
+21. UXPressia. (2023). *UXPressia - UX Mapping Tools*. Recuperado de: https://uxpressia.com/
+22. Miro. (2023). *Miro Collaborative Whiteboard*. Recuperado de: https://miro.com/
+23. GitHub. (2023). *GitHub - Version Control and Collaboration*. Recuperado de: https://github.com/
+24. Microsoft Stream. (2023). *Microsoft Stream - Video Portal*. Recuperado de: https://www.microsoft.com/en-us/microsoft-teams/microsoft-stream
+
+# **Anexos**
+
+## **Anexo A: Contenido Multimedia y Evidencia de Investigación**
+
+| Sección | Características del Video |
+| :---- | :---- |
+| **Entrevistas de Investigación Cualitativa** | **Cantidad de videos:** 1 (Consolidado) <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-needfinding-av1 <br> **Duración:** 24:15 minutos <br> **Contenido:** 6 entrevistas segmentadas (3 dueños, 3 operarios) <br> **Plataforma:** Microsoft Stream <br> **URL:** [Enlace Microsoft Stream - Por confirmar] |
+| **Video Exposición AV1** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-expo-av1 <br> **Duración:** [Duración por confirmar] minutos <br> **Contenido:** Presentación inicial del proyecto, Startup Profile y Lean UX <br> **URL:** [Enlace por confirmar] |
+| **Video Exposición TB1** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-expo-tb1 <br> **Duración:** [Duración por confirmar] minutos <br> **Contenido:** Sprint 1, Landing Page funcional y arquitectura de software <br> **URL:** [Enlace por confirmar] |
+| **Video Pitch - Elevator Pitch** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-pitch-elevator <br> **Duración:** 00:60 minutos <br> **Contenido:** Propuesta de valor resumida en 60 segundos <br> **URL:** [Enlace por confirmar] |
+| **Video Demostración de Funcionalidad** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-demo-landing <br> **Duración:** [Duración por confirmar] minutos <br> **Contenido:** Navegación completa del Landing Page y prototipo interactivo <br> **URL:** [Enlace por confirmar] |
+| **Video About-the-Product** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-product <br> **Duración:** [Duración por confirmar] minutos <br> **Contenido:** Características principales y beneficios de AI-ToDu <br> **URL:** [Enlace por confirmar] |
+| **Video About-the-Team** | **Cantidad de videos:** 1 <br> **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-team <br> **Duración:** [Duración por confirmar] minutos <br> **Contenido:** Presentación del equipo IA-INNOVATION y roles <br> **URL:** [Enlace por confirmar] |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo B: Diseño y Prototipos Interactivos**
+
+| Artefacto | Descripción | Enlace |
+| :---- | :---- | :---- |
+| **Wireframes Landing Page** | Estructura de baja fidelidad del sitio web estático. | https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web?node-id=wireframes-landing |
+| **Wireframes Web Application** | Diagramas de distribución del espacio de trabajo para la aplicación SaaS. | https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web?node-id=wireframes-app |
+| **Mockups en Alta Fidelidad** | Diseños visuales completos con paleta corporativa. | https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web?node-id=mockups |
+| **Prototipos Navegables** | Prototipo interactivo con flujos funcionales configurados. | https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web?node-id=prototypes |
+| **Design System y Componentes** | Biblioteca centralizada de componentes reutilizables. | https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web?node-id=design-system |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo C: Despliegue de Soluciones - Infraestructura y Aplicaciones**
+
+### **C.1. Landing Page Desplegada**
+
+**Descripción:** Sitio web estático que presenta la propuesta de valor de AI-ToDu, funcionalidades, planes de suscripción e información de contacto.
+
+**Stack Tecnológico:** HTML5, CSS3, JavaScript  
+**Plataforma de Despliegue:** Vercel  
+**URL:** [Por confirmar - Dominio asignado por Vercel]
+
+### **C.2. Prototipo de Web Application (Figma - Modo Preview)**
+
+**Descripción:** Versión interactiva del diseño de la aplicación web que permite navegar y simular funcionalidades.
+
+**URL:** https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web
+
+### **C.3. API REST Backend (En desarrollo)**
+
+**Descripción:** RESTful API desarrollada con Spring Boot que gestiona la lógica de negocio y proporciona endpoints para funcionalidades clave.
+
+**Stack Tecnológico:** Java 17+, Spring Boot 3, PostgreSQL  
+**Plataforma de Despliegue:** Azure App Service  
+**URL:** [Por confirmar - Dominio de Azure]
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo D: Repositorios Públicos en GitHub**
+
+| Repositorio | Descripción | Tecnología | URL |
+| :---- | :---- | :---- | :---- |
+| **ai-todu-report** | Documentación completa del proyecto, análisis de requisitos, diagramas de arquitectura y este informe en Markdown | Markdown, PlantUML | https://github.com/AI-ToDu-Aplicaciones-Web/ai-todu-report |
+| **ai-todu-landing-page** | Sitio web estático con propuesta de valor, planes y formularios | HTML5, CSS3, JavaScript | https://github.com/AI-ToDu-Aplicaciones-Web/ai-todu-landing-page |
+| **ai-todu-frontend-app** | Aplicación web (SPA) con módulos de inventario, ventas, logística y reportes | Vue.js 3, TypeScript, PrimeVue, Vite | https://github.com/AI-ToDu-Aplicaciones-Web/ai-todu-frontend-app |
+| **ai-todu-backend-api** | RESTful API con lógica de negocio implementada siguiendo DDD | Java 17+, Spring Boot 3, Maven | https://github.com/AI-ToDu-Aplicaciones-Web/ai-todu-backend-api |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo E: Arquitectura de Infraestructura en Azure**
+
+### **E.1. Diagrama de Infraestructura Completa**
+
+![Arquitectura Azure - Diagrama de Infraestructura](./assets/infrastructure/azure-infrastructure-diagram.png)
+
+**Descripción:** Diagrama que ilustra la arquitectura de despliegue de AI-ToDu en Microsoft Azure, incluyendo servicios de frontend, API, datos, seguridad y monitorización.
+
+### **E.2. Componentes Principales**
+
+**Frontend Layer:**
+- Azure Static Web Apps - Landing Page
+- Azure App Service - Web Application (SPA)
+- Azure CDN - Distribución global de contenido
+
+**Application Layer:**
+- Azure App Service - REST API
+- Azure Container Registry - imágenes Docker
+- Azure Service Bus - procesamiento asincrónico
+
+**Data Layer:**
+- Azure Database for PostgreSQL
+- Azure Cache for Redis
+- Azure Blob Storage
+
+**Security & Monitoring Layer:**
+- Azure Key Vault
+- Azure Active Directory (Azure AD)
+- Azure Application Insights
+- Web Application Firewall (WAF)
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo F: Mockups en Alta Fidelidad**
+
+### **F.1. Vista de Dashboard Gerencial**
+
+![Mockup - Dashboard Gerencial](./assets/mockups/dashboard-general-mockup.png)
+
+**Descripción:** Panel de control para dueños y administradores. Presenta indicadores clave del negocio en tiempo real, permitiendo decisiones informadas sin interrumpir operaciones.
+
+### **F.2. Vista de Inventario - Registro de Entrada**
+
+![Mockup - Inventario Entrada](./assets/mockups/inventory-entry-mockup.png)
+
+**Descripción:** Interfaz optimizada para operarios de almacén que permite registrar la entrada de nueva mercadería de manera rápida e intuitiva.
+
+### **F.3. Vista de Ventas - Carrito de Compra**
+
+![Mockup - Ventas Carrito](./assets/mockups/sales-cart-mockup.png)
+
+**Descripción:** Interfaz de punto de venta (POS) que permite procesar transacciones comerciales de manera fluida y rápida.
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo G: Matriz de Distribución de Responsabilidades**
+
+| Aspecto del Proyecto | Líder Responsable | Colaboradores |
+| :---- | :---- | :---- |
+| Dirección Técnica General | Carlos Alberto Bernal Torres | Todo el equipo |
+| Frontend / UX-UI | Jose Maria Huayra Moreyra | Ethan Raul Yi Torrejon |
+| Backend / API REST | Luis Carlos Chui Kcomt | Carlos Alberto Bernal Torres |
+| Base de Datos / Arquitectura | Ethan Raul Yi Torrejon | Luis Carlos Chui Kcomt |
+| Documentación / Reporte | Alex Rodrigo Lacuta Lima | Jose Maria Huayra Moreyra |
+| DevOps / Infraestructura Azure | Luis Carlos Chui Kcomt | Ethan Raul Yi Torrejon |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo H: Cronograma de Entregas**
+
+| Entrega | Período | Objetivos Principales | Estado |
+| :---- | :---- | :---- | :---- |
+| **AV1** | Sep 12, 2026 | Startup Profile, Lean UX, Entrevistas y análisis inicial | ✓ Completado |
+| **TB1** | Sep 19, 2026 | Sprint 1 (Landing Page), diseño UX/UI y documentación | ✓ Completado |
+| **TB2** | Por definir | Sprint 2-3 (Inventario, Ventas) | ⏳ En planificación |
+| **TF** | Por definir | Plataforma operativa y validación con usuarios | ⏳ Futuro |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo I: Glosario de Términos Técnicos y de Negocio**
+
+| Término | Definición |
+| :---- | :---- |
+| **Agregado (Aggregate)** | En DDD, conjunto de entidades relacionadas que se tratan como una unidad coherente de negocio |
+| **Bounded Context** | Límite explícito dentro del cual un modelo de dominio es definido y aplicable |
+| **Dashboard** | Panel de control visual que presenta indicadores clave en tiempo real |
+| **DDD** | Domain-Driven Design |
+| **Endpoint** | Dirección web (URL) que expone una funcionalidad de una API REST |
+| **GitFlow** | Modelo de flujo de trabajo en Git |
+| **JWT** | JSON Web Token |
+| **MYPE** | Micro y Pequeña Empresa |
+| **SaaS** | Software as a Service |
+| **SPA** | Single Page Application |
+| **Sprint** | Período de tiempo previo de desarrollo |
+| **UX/UI** | User Experience y User Interface |
+
+<div style="page-break-after: always;"></div>
+
+## **Anexo J: Recursos Adicionales y Contacto**
+
+### **J.1. Datos de Contacto del Equipo IA-INNOVATION**
+
+| Miembro | Rol | GitHub |
+| :---- | :---- | :---- |
+| Carlos Alberto Bernal Torres | Tech Lead / Full-Stack | @CharlesBernal-Hub |
+| Luis Carlos Chui Kcomt | DevOps / Backend | @OffEnergy |
+| Jose Maria Huayra Moreyra | UX/UI Designer | @TheJos9 |
+| Alex Rodrigo Lacuta Lima | QA / Documentación | @alexrodrigoll |
+| Ethan Raul Yi Torrejon | Database / Arquitectura | @MRYiEthan |
+
+### **J.2. Enlaces Centralizados del Proyecto**
+
+- Organización GitHub: https://github.com/AI-ToDu-Aplicaciones-Web
+- Repositorio del Informe: https://github.com/AI-ToDu-Aplicaciones-Web/ai-todu-report
+- Proyecto Figma: https://www.figma.com/design/tPmzGrVXLTbnfOCBikVKwB/AI-ToDu-%7C-Figma-Apps-Web
+- Landing Page: [Por confirmar]
+- API Backend: [Por confirmar - Azure]
+
+### **J.3. Licenciamiento**
+
+El código fuente de AI-ToDu se distribuye bajo licencia **MIT**.
+La documentación y diagramas están bajo licencia **Creative Commons Attribution 4.0 International (CC-BY-4.0)**.
