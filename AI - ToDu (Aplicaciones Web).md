@@ -3111,6 +3111,12 @@ La organización trabajó sobre ai-todu-report con ramas feature y consolidació
 
 **Registrar por integrante implementación, pruebas, PR/revisiones y evidencias. Consolidar las ocho secciones del sprint, Student Outcome con acciones individuales y 5.3 con 3–5 entrevistas por cada uno de los dos segmentos, registro y evaluación heurística. Completar 5.4, About-the-Product, About-the-Team, exposición AV2, presentación y reporte de participación. La planificación no reemplaza evidencias auténticas ni acredita trabajo terminado.**
 
+<a name="sec-5-4"></a>
+
+## 5.4. Video About-the-Product.
+
+Video promocional de AI-ToDu que presenta la propuesta de valor, recorre las funcionalidades principales de la plataforma e incluye el testimonio de un usuario entrevistado.
+
 ## **Conclusiones**
 
 AI-ToDu presenta una solución orientada a resolver los problemas reales de gestión operativa que enfrentan las micro y pequeñas empresas en Perú, especialmente aquellas que gestionan inventario, ventas y despacho de manera manual o con herramientas fragmentadas. A partir del análisis de los segmentos objetivo, se identificó que los dueños y administradores requieren visibilidad, control y rentabilidad, mientras que los operarios necesitan rapidez, simplicidad y reducción de errores en procesos diarios. Esta diferencia de necesidades permite justificar la propuesta del producto como una plataforma SaaS integral, diseñada para apoyar tanto la toma de decisiones como la ejecución operativa.
