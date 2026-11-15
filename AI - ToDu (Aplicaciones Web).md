@@ -3133,6 +3133,7 @@ Asimismo, el enfoque centrado en el usuario permitió definir una propuesta de v
 
 El análisis realizado permite concluir que AI-ToDu puede convertirse en una herramienta estratégica para las MYPES que buscan digitalizar sus operaciones sin requerir sistemas complejos, costosos o difíciles de adoptar. Sin embargo, su éxito dependerá de la continuidad en la validación de las necesidades reales del usuario, así como de la capacidad del producto para mantener una experiencia intuitiva, confiable y escalable.
 
+
 **Conclusiones y recomendaciones**
 
 Se recomienda continuar validando la propuesta con propietarios, administradores y operarios de almacén mediante entrevistas, pruebas de usabilidad y prototipos funcionales. Asimismo, es importante priorizar el desarrollo del módulo base de inventario y ventas, pues representa el mayor valor para los usuarios y el punto de partida más sólido para la adopción del sistema. También se sugiere reforzar aspectos como la seguridad de la información, la facilidad de onboarding, la integración con procesos reales del negocio y la generación de reportes que apoyen la toma de decisiones.
@@ -3155,6 +3156,22 @@ Se recomienda continuar validando la propuesta con propietarios, administradores
 - Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
 - Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
 - Explorar integraciones con servicios externos (SUNAT, proveedores de IoT, sistemas de pago) para ampliar las capacidades de la plataforma.
+
+
+<a name="sec-video-about-the-team"></a>
+
+### Video About-the-Team.
+
+Video de presentación del equipo IA-INNOVATION: integrantes, roles, proceso colaborativo de desarrollo y reflexión sobre el logro del Student Outcome.
+
+![Captura del video About-the-Team](assets/videos/about-the-team.png)
+
+*Figura X. Captura del video About-the-Team.*
+
+- **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-team
+- **Duración:** 0:46 minutos
+- **Enlace YouTube:** [https://youtu.be/MQLYOIeeO4Q](https://youtu.be/MQLYOIeeO4Q)
+- **Enlace Microsoft Stream:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
 ## **Bibliografía**
 
