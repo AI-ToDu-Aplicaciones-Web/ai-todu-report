@@ -3111,6 +3111,19 @@ La organización trabajó sobre ai-todu-report con ramas feature y consolidació
 
 **Registrar por integrante implementación, pruebas, PR/revisiones y evidencias. Consolidar las ocho secciones del sprint, Student Outcome con acciones individuales y 5.3 con 3–5 entrevistas por cada uno de los dos segmentos, registro y evaluación heurística. Completar 5.4, About-the-Product, About-the-Team, exposición AV2, presentación y reporte de participación. La planificación no reemplaza evidencias auténticas ni acredita trabajo terminado.**
 
+<a name="sec-5-4"></a>
+
+## 5.4. Video About-the-Product.
+
+Video promocional de AI-ToDu que presenta la propuesta de valor, recorre las funcionalidades principales de la plataforma e incluye el testimonio de un usuario entrevistado.
+
+![Captura del video About-the-Product](assets/videos/about-the-product.png)
+
+- **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-product
+- **Duración:**  0:46 minutos
+- **Enlace YouTube:** [https://youtu.be/MQLYOIeeO4Q ](https://youtu.be/MQLYOIeeO4Q )
+- **Enlace Microsoft Stream:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 ## **Conclusiones**
 
 AI-ToDu presenta una solución orientada a resolver los problemas reales de gestión operativa que enfrentan las micro y pequeñas empresas en Perú, especialmente aquellas que gestionan inventario, ventas y despacho de manera manual o con herramientas fragmentadas. A partir del análisis de los segmentos objetivo, se identificó que los dueños y administradores requieren visibilidad, control y rentabilidad, mientras que los operarios necesitan rapidez, simplicidad y reducción de errores en procesos diarios. Esta diferencia de necesidades permite justificar la propuesta del producto como una plataforma SaaS integral, diseñada para apoyar tanto la toma de decisiones como la ejecución operativa.
@@ -3120,6 +3133,7 @@ El desarrollo de herramientas como User Personas, User Task Matrix, User Journey
 Asimismo, el enfoque centrado en el usuario permitió definir una propuesta de valor clara: facilitar el control del inventario, optimizar el flujo de ventas, mejorar la logística y ofrecer reportes para la toma de decisiones. La arquitectura del sistema, el diseño de la interfaz y la priorización del backlog muestran que la solución responde a necesidades concretas del negocio y no a una idea tecnológica aislada. Esto refuerza la relevancia del proyecto, ya que conecta un problema operativo real con una propuesta sustentada en investigación, diseño y validación.
 
 El análisis realizado permite concluir que AI-ToDu puede convertirse en una herramienta estratégica para las MYPES que buscan digitalizar sus operaciones sin requerir sistemas complejos, costosos o difíciles de adoptar. Sin embargo, su éxito dependerá de la continuidad en la validación de las necesidades reales del usuario, así como de la capacidad del producto para mantener una experiencia intuitiva, confiable y escalable.
+
 
 **Conclusiones y recomendaciones**
 
@@ -3143,6 +3157,22 @@ Se recomienda continuar validando la propuesta con propietarios, administradores
 - Garantizar mecanismos de seguridad, permisos por roles y trazabilidad de acciones para reforzar la confianza del cliente.
 - Mantener una estrategia de mejora continua, incorporando retroalimentación del usuario para optimizar funcionalidades y aumentar la adopción del sistema.
 - Explorar integraciones con servicios externos (SUNAT, proveedores de IoT, sistemas de pago) para ampliar las capacidades de la plataforma.
+
+
+<a name="sec-video-about-the-team"></a>
+
+### Video About-the-Team.
+
+Video de presentación del equipo IA-INNOVATION: integrantes, roles, proceso colaborativo de desarrollo y reflexión sobre el logro del Student Outcome.
+
+![Captura del video About-the-Team](assets/videos/about-the-team.png)
+
+*Figura X. Captura del video About-the-Team.*
+
+- **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-team
+- **Duración:** 0:46 minutos
+- **Enlace YouTube:** [https://youtu.be/MQLYOIeeO4Q](https://youtu.be/MQLYOIeeO4Q)
+- **Enlace Microsoft Stream:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
 ## **Bibliografía**
 
@@ -3193,8 +3223,8 @@ Se recomienda continuar validando la propuesta con propietarios, administradores
 <tr><td>Video Exposición TB1</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-expo-tb1<br><br>Duración: [Duración por confirmar] minutos<br><br>Contenido: Sprint 1, Landing Page funcional y arquitectura de software<br><br>URL: [Enlace por confirmar]</td></tr>
 <tr><td>Video Pitch - Elevator Pitch</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-pitch-elevator<br><br>Duración: 00:60 minutos<br><br>Contenido: Propuesta de valor resumida en 60 segundos<br><br>URL: [Enlace por confirmar]</td></tr>
 <tr><td>Video Demostración de Funcionalidad</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-demo-landing<br><br>Duración: [Duración por confirmar] minutos<br><br>Contenido: Navegación completa del Landing Page y prototipo interactivo<br><br>URL: [Enlace por confirmar]</td></tr>
-<tr><td>Video About-the-Product</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-about-product<br><br>Duración: [Duración por confirmar] minutos<br><br>Contenido: Características principales y beneficios de AI-ToDu<br><br>URL: [Enlace por confirmar]</td></tr>
-<tr><td>Video About-the-Team</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-about-team<br><br>Duración: [Duración por confirmar] minutos<br><br>Contenido: Presentación del equipo AI-INNOVATION y roles<br><br>URL: [Enlace por confirmar]</td></tr>
+<tr><td>Video About-the-Product</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-about-product<br><br>Duración: 00:46 minutos<br><br>Contenido: Características principales y beneficios de AI-ToDu<br><br>URL YouTube: <a href="https://youtu.be/MQLYOIeeO4Q">https://youtu.be/MQLYOIeeO4Q</a><br><br>URL Microsoft Stream: <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn</a></td></tr>
+<tr><td>Video About-the-Team</td><td>Cantidad de videos: 1<br><br>Nomenclatura: upc-pre-202620-1asi0730-8088-AI-ToDu-about-team<br><br>Duración: 00:48 minutos<br><br>Contenido: Presentación del equipo AI-INNOVATION y roles<br><br>URL YouTube: <a href="https://youtu.be/dInEl500POY">https://youtu.be/dInEl500POY</a><br><br>URL Microsoft Stream: <a href="LINK_STREAM_TEAM">LINK_STREAM_TEAM</a></td></tr>
 </table>
 
 **Anexo B: Diseño y Prototipos Interactivos**
