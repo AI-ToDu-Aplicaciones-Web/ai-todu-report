@@ -3117,6 +3117,12 @@ La organización trabajó sobre ai-todu-report con ramas feature y consolidació
 
 Video promocional de AI-ToDu que presenta la propuesta de valor, recorre las funcionalidades principales de la plataforma e incluye el testimonio de un usuario entrevistado.
 
+![Captura del video About-the-Product](assets/videos/about-the-product.png)
+
+- **Nomenclatura:** upc-pre-202620-1asi0730-8088-AI-ToDu-about-product
+- **Duración:**  0:46 minutos
+- **Enlace YouTube:** [https://youtu.be/MQLYOIeeO4Q ](https://youtu.be/MQLYOIeeO4Q )
+- **Enlace Microsoft Stream:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241g396_upc_edu_pe/IQDJ38br-kSBQb_Mhbcf3DrIAYxutg8c266Vd4b7R_yjSq4?e=SyuIMn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 ## **Conclusiones**
 
 AI-ToDu presenta una solución orientada a resolver los problemas reales de gestión operativa que enfrentan las micro y pequeñas empresas en Perú, especialmente aquellas que gestionan inventario, ventas y despacho de manera manual o con herramientas fragmentadas. A partir del análisis de los segmentos objetivo, se identificó que los dueños y administradores requieren visibilidad, control y rentabilidad, mientras que los operarios necesitan rapidez, simplicidad y reducción de errores en procesos diarios. Esta diferencia de necesidades permite justificar la propuesta del producto como una plataforma SaaS integral, diseñada para apoyar tanto la toma de decisiones como la ejecución operativa.
